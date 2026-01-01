@@ -78,19 +78,27 @@ PopupWindow {
         // Opacity animation
         opacity: popup.animationProgress
         
-        // Slide animation - slide from panel direction
-        transform: Translate {
-            y: {
-                var isPanelAtBottom = panel.anchors.bottom
-                var slideDistance = 100
-                
-                if (isPanelAtBottom) {
-                    return slideDistance * (1 - popup.animationProgress)
-                } else {
-                    return -slideDistance * (1 - popup.animationProgress)
+        // Scale and slide animation
+        transformOrigin: Item.Center
+        
+        transform: [
+            Scale {
+                xScale: 0.7 + (0.3 * popup.animationProgress)
+                yScale: 0.7 + (0.3 * popup.animationProgress)
+            },
+            Translate {
+                y: {
+                    var isPanelAtBottom = panel.anchors.bottom
+                    var slideDistance = 200
+                    
+                    if (isPanelAtBottom) {
+                        return slideDistance * (1 - popup.animationProgress)
+                    } else {
+                        return -slideDistance * (1 - popup.animationProgress)
+                    }
                 }
             }
-        }
+        ]
         
         Item {
             id: contentContainer
