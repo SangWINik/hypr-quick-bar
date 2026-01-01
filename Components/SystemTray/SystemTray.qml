@@ -7,7 +7,6 @@ import "../Structure"
 Module {
     id: systemTrayModule
     
-    property var panelWindow: null
     visible: SystemTray.items.values.length > 0
     
     Row {
@@ -59,12 +58,12 @@ Module {
                         } else if (mouse.button === Qt.RightButton) {
                             console.log("Right click, hasMenu:", trayIcon.modelData.hasMenu)
                             if (trayIcon.modelData.hasMenu) {
-                                if (systemTrayModule.panelWindow) {
+                                if (panel) {
                                     // Map mouse coordinates to window coordinates
-                                    let globalPos = mouseArea.mapToItem(systemTrayModule.panelWindow.contentItem, mouse.x, mouse.y)
-                                    trayIcon.modelData.display(systemTrayModule.panelWindow, globalPos.x, globalPos.y)
+                                    let globalPos = mouseArea.mapToItem(panel.contentItem, mouse.x, mouse.y)
+                                    trayIcon.modelData.display(panel, globalPos.x, globalPos.y)
                                 } else {
-                                    console.log("ERROR: panelWindow is null")
+                                    console.log("ERROR: panel is null")
                                 }
                             }
                         } else if (mouse.button === Qt.MiddleButton) {
