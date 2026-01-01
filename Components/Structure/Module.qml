@@ -19,7 +19,7 @@ Rectangle {
     default property alias data: contentItem.data
     
     height: config.moduleHeight
-    implicitWidth: contentItem.implicitWidth + horizontalPadding * 2
+    implicitWidth: contentItem.childrenRect.width + horizontalPadding * 2
     
     MouseArea {
         id: moduleMouseArea
@@ -40,13 +40,7 @@ Rectangle {
     
     Item {
         id: contentItem
-        anchors.fill: parent
-        anchors.leftMargin: horizontalPadding
-        anchors.rightMargin: horizontalPadding
-        anchors.topMargin: verticalPadding
-        anchors.bottomMargin: verticalPadding
-        
-        implicitWidth: childrenRect.width
+        anchors.centerIn: parent
         z: 2
     }
 }

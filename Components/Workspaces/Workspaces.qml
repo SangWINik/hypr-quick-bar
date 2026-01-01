@@ -8,6 +8,7 @@ Module {
     color: "transparent"
 
     Row {
+        anchors.centerIn: parent
         spacing: 8
 
         Repeater {

@@ -23,7 +23,7 @@ Module {
     
     // Monitor changes to the default sink and its volume
     Connections {
-        target: Pipewire.defaultAudioSink?.audio
+        target: Pipewire.defaultAudioSink ? Pipewire.defaultAudioSink.audio : null
         
         function onVolumeChanged() {
             if (Pipewire.defaultAudioSink?.audio) {

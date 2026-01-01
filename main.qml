@@ -65,14 +65,6 @@ Scope {
             // resolved lazily, may be null initially
             property var hyprMonitor: Hyprland.monitorFor(screen)
 
-            Connections {
-                target: Hyprland
-                function onMonitorsChanged() {
-                    console.log("Monitors changed, updating panel monitor assignment");
-                    panel.hyprMonitor = Hyprland.monitorFor(screen)
-                }
-            }
-
             Rectangle {
                 anchors.fill: parent
                 color: "transparent"
