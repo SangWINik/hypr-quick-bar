@@ -3,7 +3,7 @@ import "../Structure"
 
 Module {
     id: root
-    width: 35
+    width: 45
     
     enableClickArea: true
     enableHover: true
