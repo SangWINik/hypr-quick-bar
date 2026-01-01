@@ -3,8 +3,8 @@ import "../Structure"
 
 ModulePopup {
     id: popup
-    width: 320
-    height: contentColumn.height + 16 + contentColumn.bottomPadding
+    implicitWidth: 360
+    implicitHeight: contentColumn.height + 16 + contentColumn.bottomPadding
 
     onVisibleChanged: {
         systemResourcesService.monitoringActive = visible

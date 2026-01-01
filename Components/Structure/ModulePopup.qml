@@ -24,8 +24,8 @@ PopupWindow {
     property int cornerRadius: 10
     
     visible: false
-    width: popupWidth
-    height: popupHeight
+    implicitWidth: popupWidth
+    implicitHeight: popupHeight
     
     anchor.window: panel
     anchor.rect.x: {
