@@ -11,6 +11,14 @@ ModulePopup {
     property int displayMonth: currentDate.getMonth()
     property int displayYear: currentDate.getFullYear()
     
+    onVisibleChanged: {
+        if (visible) {
+            currentDate = new Date()
+            displayMonth = currentDate.getMonth()
+            displayYear = currentDate.getFullYear()
+        }
+    }
+    
     function getDaysInMonth(year, month) {
         return new Date(year, month + 1, 0).getDate()
     }
