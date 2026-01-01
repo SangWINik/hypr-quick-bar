@@ -13,9 +13,10 @@ import "Components/Structure"
 Rectangle {
     id: barLayout
     anchors.fill: parent
-    color: "transparent"
+
     
     // Configuration
+    color: "transparent"
     property string barPosition: "bottom"  // "bottom" or "top"
 
     // Left section
