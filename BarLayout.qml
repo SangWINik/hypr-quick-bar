@@ -14,6 +14,9 @@ Rectangle {
     id: barLayout
     anchors.fill: parent
     color: "transparent"
+    
+    // Configuration
+    property string barPosition: "bottom"  // "bottom" or "top"
 
     // Left section
     BarSection {

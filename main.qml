@@ -50,11 +50,17 @@ Scope {
             screen: modelData
             property var hyprMonitor: Hyprland.monitorFor(screen)
             
-            anchors { bottom: true; left: true; right: true }
+            anchors {
+                bottom: barLayout.barPosition === "bottom"
+                top: barLayout.barPosition !== "bottom"
+                left: true
+                right: true
+            }
             implicitHeight: 40
             color: "transparent"
 
             BarLayout {
+                id: barLayout
             }
         }
     }
