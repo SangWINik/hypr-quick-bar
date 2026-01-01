@@ -12,6 +12,7 @@ import "Components/Language"
 import "Components/Volume"
 import "Components/Internet"
 import "Components/Power"
+import "Components/SystemResources"
 import "Components/SystemTray"
 import "Components/Structure"
 import "Services"
@@ -35,6 +36,10 @@ Scope {
     
     InternetService {
         id: internetService
+    }
+    
+    SystemResourcesService {
+        id: systemResourcesService
     }
     
     PopupManager {
@@ -101,6 +106,9 @@ Scope {
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.rightMargin: 8
+
+                    SystemResources {
+                    }
 
                     Internet {
                     }
