@@ -26,6 +26,13 @@ Rectangle {
     implicitWidth: contentRow.implicitWidth + horizontalPadding * 2
     implicitHeight: contentRow.implicitHeight + verticalPadding * 2
     
+    Behavior on implicitWidth {
+        NumberAnimation {
+            duration: 100
+            easing.type: Easing.OutCubic
+        }
+    }
+    
     // Default property: children declared in BarSection go into contentRow
     default property alias children: contentRow.children
     

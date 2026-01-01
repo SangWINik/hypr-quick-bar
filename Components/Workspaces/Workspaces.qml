@@ -21,6 +21,22 @@ Module {
                     && modelData.monitor.name === workspacesModule.hyprMonitor.name
                 
                 visible: active // without this line there are issues on disconnecting/reconnecting monitors, makes sure there are no invisible items taking space
+                scale: active ? 1 : 0
+                opacity: active ? 1 : 0
+                
+                Behavior on scale {
+                    NumberAnimation {
+                        duration: 150
+                        easing.type: Easing.OutCubic
+                    }
+                }
+                
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: 150
+                        easing.type: Easing.OutCubic
+                    }
+                }
                 
                 sourceComponent: WorkspaceIndicator {
                     workspace: modelData
