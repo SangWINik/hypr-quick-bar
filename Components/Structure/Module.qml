@@ -36,6 +36,13 @@ Rectangle {
         radius: 6
         z: 0
         visible: root.enableHover
+        
+        Behavior on color {
+            ColorAnimation {
+                duration: 150
+                easing.type: Easing.OutCubic
+            }
+        }
     }
     
     Item {
