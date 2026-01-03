@@ -52,8 +52,17 @@ Item {
             return
         }
         
-        playerName = parts[0] || ""
-        status = parts[1] || "Stopped"
+        var newPlayerName = parts[0] || ""
+        var newStatus = parts[1] || "Stopped"
+        
+        // Priority: Don't switch away from a playing player to a different player
+        if (status === "Playing" && playerName !== "" && playerName !== newPlayerName) {
+            console.log("MediaService: Ignoring", newPlayerName, "because", playerName, "is currently playing")
+            return
+        }
+        
+        playerName = newPlayerName
+        status = newStatus
         title = parts[2] || "Unknown"
         artist = parts[3] || ""
         album = parts[4] || ""
