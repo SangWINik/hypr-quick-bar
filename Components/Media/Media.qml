@@ -67,7 +67,7 @@ Module {
         // Previous button
         MouseArea {
             id: previousButton
-            visible: showAllControls
+            visible: showAllControls && !mediaService.isLive
             anchors.verticalCenter: parent.verticalCenter
             width: 28
             height: 28
@@ -98,24 +98,41 @@ Module {
             spacing: 1
             width: 250
             
-            // Title
-            Text {
+            // Title with LIVE indicator
+            Row {
                 width: parent.width
-                text: {
-                    var fullText = mediaService.title
-                    if (mediaService.artist) {
-                        fullText += " - " + mediaService.artist
-                    }
-                    return fullText
+                spacing: 6
+                
+                // Red circle LIVE indicator
+                Rectangle {
+                    id: liveIndicator
+                    visible: mediaService.isLive
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: 8
+                    height: 8
+                    radius: 4
+                    color: "#ef4444"
                 }
-                color: appTheme.colors.fg
-                font.pixelSize: config.fontSize - 3
-                elide: Text.ElideRight
-                horizontalAlignment: Text.AlignLeft
+                
+                Text {
+                    width: parent.width - (liveIndicator.visible ? liveIndicator.width + parent.spacing : 0)
+                    text: {
+                        var fullText = mediaService.title
+                        if (mediaService.artist) {
+                            fullText += " - " + mediaService.artist
+                        }
+                        return fullText
+                    }
+                    color: appTheme.colors.fg
+                    font.pixelSize: config.fontSize - 3
+                    elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
+                }
             }
             
             // Timeline
             Item {
+                visible: !mediaService.isLive
                 width: parent.width
                 height: 10
                 
@@ -164,7 +181,7 @@ Module {
         // Next button
         MouseArea {
             id: nextButton
-            visible: showAllControls
+            visible: showAllControls && !mediaService.isLive
             anchors.verticalCenter: parent.verticalCenter
             width: 28
             height: 28

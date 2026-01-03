@@ -22,6 +22,9 @@ Item {
     // Computed property for visibility
     property bool hasActiveMedia: status === "Playing" || status === "Paused"
     
+    // Computed property for live streams (max int64 means unknown/infinite duration)
+    property bool isLive: length == 0 || length >= 9223372036854775807
+    
     // Continuous metadata monitoring process (event-based)
     property var metadataMonitor: Process {
         running: true
