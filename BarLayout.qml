@@ -8,6 +8,7 @@ import "Components/Internet"
 import "Components/Power"
 import "Components/SystemResources"
 import "Components/SystemTray"
+import "Components/Media"
 import "Components/Structure"
 
 Rectangle {
@@ -21,6 +22,7 @@ Rectangle {
 
     // Left section
     BarSection {
+        id: timeSection
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: 8
@@ -29,6 +31,18 @@ Rectangle {
         }
         
         Calendar {
+        }
+    }
+
+    // Left section - Media
+    BarSection {
+        anchors.left: timeSection.right
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.leftMargin: 8
+        visible: mediaService.hasActiveMedia
+
+        Media {
+            showControlsWhenPaused: false
         }
     }
 

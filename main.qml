@@ -32,6 +32,10 @@ Scope {
         id: systemResourcesService
     }
     
+    MediaService {
+        id: mediaService
+    }
+    
     PopupManager {
         id: popupManager
     }
