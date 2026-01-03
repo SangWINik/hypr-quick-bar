@@ -33,6 +33,9 @@ Item {
             onRead: line => {
                 if (line.length > 0) {
                     parseMetadata(line)
+                } else {
+                    // Empty line means no players available
+                    status = "Stopped"
                 }
             }
         }
@@ -41,6 +44,7 @@ Item {
     function parseMetadata(line) {
         var parts = line.split("|")
         if (parts.length !== 8) {
+            status = "Stopped";
             console.warn("MediaService: Unexpected metadata format from playerctl:", line)
             return
         }
@@ -52,7 +56,7 @@ Item {
         album = parts[4] || ""
         length = parseFloat(parts[5] || "0")
         volume = parseFloat(parts[6] || "0.5")
-        position = parseFloat(parts[7] || "0")
+        position = parseFloat(parts[7] || "0") // for some reason Spotify reports wrong position when first started
         
         // Update capabilities
         canControl = status !== "Stopped"
