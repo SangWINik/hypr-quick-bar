@@ -12,7 +12,7 @@ Module {
     
     Text {
         anchors.centerIn: parent
-        text: Qt.formatDateTime(timeService.currentTime, "ddd dd MMM")
+        text: Qt.formatDateTime(timeService.currentTime, "ddd, d MMM")
         color: appTheme.colors.fg
         font.pixelSize: config.fontSize
     }
