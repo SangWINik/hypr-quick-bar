@@ -11,7 +11,7 @@ Rectangle {
     
     // Padding for content
     property int horizontalPadding: 8
-    property int verticalPadding: 4
+    property int verticalPadding: 0
     property int sectionSpacing: 0
     
     color: backgroundColor
@@ -24,7 +24,8 @@ Rectangle {
     visible: contentRow.children.length > 0
     
     implicitWidth: contentRow.implicitWidth + horizontalPadding * 2
-    implicitHeight: contentRow.implicitHeight + verticalPadding * 2
+    // implicitHeight: contentRow.implicitHeight + verticalPadding * 2
+    implicitHeight: config?.bar?.section?.height ?? 22
     
     Behavior on implicitWidth {
         NumberAnimation {
@@ -38,11 +39,11 @@ Rectangle {
     
     Row {
         id: contentRow
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: horizontalPadding
         anchors.rightMargin: horizontalPadding
-        anchors.topMargin: verticalPadding
-        anchors.bottomMargin: verticalPadding
         spacing: sectionSpacing
         
         // Children (modules) will be added here

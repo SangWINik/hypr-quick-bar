@@ -124,7 +124,7 @@ Module {
                         return fullText
                     }
                     color: appTheme.colors.fg
-                    font.pixelSize: config.fontSize - 3
+                    font.pixelSize: appConfig.fontSize - 3
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
                 }

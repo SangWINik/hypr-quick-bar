@@ -4,7 +4,6 @@ import "../Structure"
 
 Module {
     id: workspacesModule
-    color: "transparent"
 
     Row {
         anchors.centerIn: parent

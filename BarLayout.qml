@@ -17,7 +17,7 @@ Rectangle {
 
     
     // Configuration
-    color: "transparent"
+    color: config?.bar?.backgroundColor ?? "transparent"
     property string barPosition: "bottom"  // "bottom" or "top"
 
     // Left section
@@ -25,7 +25,6 @@ Rectangle {
         id: timeSection
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        anchors.leftMargin: 8
 
         Clock {
         }
@@ -59,7 +58,6 @@ Rectangle {
         id: languageSection
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: 8
 
         SystemResources {
         }

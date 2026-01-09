@@ -76,7 +76,7 @@ Module {
             }
             color: appTheme.colors.fg
             font.family: "NotoSansMono Nerd Font"
-            font.pixelSize: config.fontSize + 4
+            font.pixelSize: appConfig.fontSize + 4
         }
         
         // Volume percentage
@@ -85,7 +85,7 @@ Module {
             text: Math.round(currentVolume * 100) + "%"
             color: appTheme.colors.fg
             font.family: "NotoSansMono Nerd Font"
-            font.pixelSize: config.fontSize - 2
+            font.pixelSize: appConfig.fontSize - 2
         } */
     }
     

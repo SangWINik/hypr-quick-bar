@@ -15,7 +15,7 @@ Module {
         text: "⏻"
         color: appTheme.colors.error
         font.family: "NotoSansMono Nerd Font"
-        font.pixelSize: config.fontSize + 8
+        font.pixelSize: appConfig.fontSize + 8
     }
     
     PowerPopup {

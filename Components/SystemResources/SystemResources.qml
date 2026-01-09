@@ -15,7 +15,7 @@ Module {
         text: "󰘚"
         color: appTheme.colors.fg
         font.family: "NotoSansMono Nerd Font"
-        font.pixelSize: config.fontSize + 4
+        font.pixelSize: appConfig.fontSize + 4
     }
     
     SystemResourcesPopup {

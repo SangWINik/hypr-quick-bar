@@ -54,7 +54,7 @@ Module {
         anchors.centerIn: parent
         text: currentLanguage
         color: appTheme.colors.fg
-        font.pixelSize: config.fontSize
+        font.pixelSize: appConfig.fontSize
         font.bold: true
     }
     

@@ -3,8 +3,6 @@ import QtQuick
 Rectangle {
     id: root
     
-    // Common module styling
-    color: "transparent"
     // radius: 30
     
     // Padding for content
@@ -18,7 +16,8 @@ Rectangle {
     
     default property alias data: contentItem.data
     
-    height: config.moduleHeight
+    height: config?.bar?.module?.height ?? 22
+    color: config?.bar?.module?.backgroundColor ?? "transparent"
     implicitWidth: contentItem.childrenRect.width + horizontalPadding * 2
     
     MouseArea {

@@ -37,7 +37,7 @@ Module {
         }
         color: internetService.isConnected ? appTheme.colors.fg : appTheme.colors.error
         font.family: "NotoSansMono Nerd Font"
-        font.pixelSize: config.fontSize + 4
+        font.pixelSize: appConfig.fontSize + 4
     }
     
     InternetPopup {
