@@ -40,6 +40,7 @@ Item {
     Timer {
         id: updateTimer
         interval: 1000
+        triggeredOnStart: true
         running: monitoringActive
         repeat: true
         onTriggered: {
