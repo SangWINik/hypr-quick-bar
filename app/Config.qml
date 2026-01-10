@@ -7,7 +7,12 @@ Scope {
     
     property var bar: ({})
     
-    readonly property string configPath: Qt.resolvedUrl("config.json").toString().replace("file://", "")
+    readonly property string configPath: {
+        var cacheHome = Quickshell.env("XDG_CACHE_HOME");
+        var home = Quickshell.env("HOME");
+        var basePath = cacheHome || (home + "/.cache");
+        return basePath + "/hypr-quick-bar/config.json";
+    }
     
     function loadConfig() {
         configReader.running = false
@@ -22,19 +27,6 @@ Scope {
         
         stdout: StdioCollector {
             onStreamFinished: root.bar = JSON.parse(this.text).bar
-        }
-    }
-    
-    property var fileWatcher: Process {
-        running: true
-        command: ["sh", "-c", 
-            "while inotifywait -q -e modify,close_write " + configPath + " 2>/dev/null; do echo RELOAD; done"
-        ]
-        
-        stdout: SplitParser {
-            onRead: line => {
-                if (line.includes("RELOAD")) loadConfig()
-            }
         }
     }
 }
