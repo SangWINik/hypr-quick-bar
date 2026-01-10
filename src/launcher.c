@@ -31,9 +31,11 @@ void handle_kill_signal(int sig) {
 static void print_help(const char *program_name) {
     printf("Usage: %s [OPTIONS]\n", program_name);
     printf("\nOptions:\n");
-    printf("  -d, --app-dir DIR   QML application directory (default: ~/.local/share/hypr-quick-bar)\n");
-    printf("  -w, --watch         Enable config file watching\n");
-    printf("  -h, --help          Show this help message\n");
+    printf("  -d, --app-dir DIR      QML application directory (default: ~/.local/share/hypr-quick-bar)\n");
+    printf("  --config-dir DIR       Override config directory (default: ~/.config/hypr-quick-bar)\n");
+    printf("  --cache-dir DIR        Override cache directory (default: ~/.cache/hypr-quick-bar)\n");
+    printf("  -w, --watch            Enable config file watching\n");
+    printf("  -h, --help             Show this help message\n");
 }
 
 static void on_config_changed(void) {
@@ -69,16 +71,25 @@ static void on_config_changed(void) {
 
 static void run_quickshell(void) {
     char main_qml_path[4096];
-    snprintf(main_qml_path, sizeof(main_qml_path), "%s/main.qml", app_dir);
+    int n = snprintf(main_qml_path, sizeof(main_qml_path), "%s/main.qml", app_dir);
+    if (n < 0 || n >= (int)sizeof(main_qml_path)) {
+        fprintf(stderr, "%s: WARNING: main_qml_path truncated!\n", PROGRAM_NAME);
+    }
     
+    // Set CONFIG_FILE environment variable for quickshell
+    char *config_file = get_processed_config_path();
+    if (config_file) {
+        setenv("CONFIG_FILE", config_file, 1);
+    }
+
     char *args[] = {
         "quickshell",
         "--path", main_qml_path,
         NULL
     };
-    
+
     execvp("quickshell", args);
-    
+
     // Only reached if exec fails
     fprintf(stderr, "%s: exec failed: %s\n", PROGRAM_NAME, strerror(errno));
     exit(1);
@@ -147,6 +158,20 @@ int main(int argc, char *argv[]) {
                 strncpy(app_dir, argv[++i], sizeof(app_dir) - 1);
             } else {
                 fprintf(stderr, "%s: --app-dir requires a path argument\n", PROGRAM_NAME);
+                return 1;
+            }
+        } else if (strcmp(argv[i], "--config-dir") == 0) {
+            if (i + 1 < argc) {
+                set_config_dir(argv[++i]);
+            } else {
+                fprintf(stderr, "%s: --config-dir requires a path argument\n", PROGRAM_NAME);
+                return 1;
+            }
+        } else if (strcmp(argv[i], "--cache-dir") == 0) {
+            if (i + 1 < argc) {
+                set_cache_dir(argv[++i]);
+            } else {
+                fprintf(stderr, "%s: --cache-dir requires a path argument\n", PROGRAM_NAME);
                 return 1;
             }
         } else if (strcmp(argv[i], "--watch") == 0 || strcmp(argv[i], "-w") == 0) {

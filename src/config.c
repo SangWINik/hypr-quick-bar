@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include "config.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,11 +8,36 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+static char custom_config_dir[PATH_MAX] = "";
+static char custom_cache_dir[PATH_MAX] = "";
+
+void set_config_dir(const char *dir) {
+    if (dir) {
+        strncpy(custom_config_dir, dir, sizeof(custom_config_dir) - 1);
+        custom_config_dir[sizeof(custom_config_dir) - 1] = '\0';
+    } else {
+        custom_config_dir[0] = '\0';
+    }
+}
+
+void set_cache_dir(const char *dir) {
+    if (dir) {
+        strncpy(custom_cache_dir, dir, sizeof(custom_cache_dir) - 1);
+        custom_cache_dir[sizeof(custom_cache_dir) - 1] = '\0';
+    } else {
+        custom_cache_dir[0] = '\0';
+    }
+}
+
 char* get_config_dir(void) {
     static char path[PATH_MAX];
+    if (custom_config_dir[0]) {
+        strncpy(path, custom_config_dir, sizeof(path) - 1);
+        path[sizeof(path) - 1] = '\0';
+        return path;
+    }
     const char *config_home = getenv("XDG_CONFIG_HOME");
     const char *home = getenv("HOME");
-    
     if (config_home) {
         snprintf(path, sizeof(path), "%s/hypr-quick-bar", config_home);
     } else if (home) {
@@ -19,7 +45,6 @@ char* get_config_dir(void) {
     } else {
         return NULL;
     }
-    
     return path;
 }
 
@@ -37,23 +62,24 @@ char* get_config_path(void) {
 
 char* get_processed_config_path(void) {
     static char path[PATH_MAX];
-    const char *cache_home = getenv("XDG_CACHE_HOME");
-    const char *home = getenv("HOME");
-    
-    if (cache_home) {
-        snprintf(path, sizeof(path), "%s/hypr-quick-bar", cache_home);
-    } else if (home) {
-        snprintf(path, sizeof(path), "%s/.cache/hypr-quick-bar", home);
+    if (custom_cache_dir[0]) {
+        strncpy(path, custom_cache_dir, sizeof(path) - 1);
+        path[sizeof(path) - 1] = '\0';
     } else {
-        return NULL;
+        const char *cache_home = getenv("XDG_CACHE_HOME");
+        const char *home = getenv("HOME");
+        if (cache_home) {
+            snprintf(path, sizeof(path), "%s/hypr-quick-bar", cache_home);
+        } else if (home) {
+            snprintf(path, sizeof(path), "%s/.cache/hypr-quick-bar", home);
+        } else {
+            return NULL;
+        }
     }
-    
     // Create cache directory if it doesn't exist
     mkdir(path, 0755);
-    
     // Append filename
     strncat(path, "/config.json", sizeof(path) - strlen(path) - 1);
-    
     return path;
 }
 

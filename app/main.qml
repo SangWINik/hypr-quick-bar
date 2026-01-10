@@ -22,7 +22,6 @@ Scope {
     QtObject {
         id: appConfig
         property int fontSize: 14
-        property int moduleHeight: appConfig.bar.module?.height ?? 22
     }
     
     TimeService {

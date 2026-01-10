@@ -8,6 +8,9 @@ Scope {
     property var bar: ({})
     
     readonly property string configPath: {
+        var envPath = Quickshell.env("CONFIG_FILE");
+        if (envPath && envPath.length > 0)
+            return envPath;
         var cacheHome = Quickshell.env("XDG_CACHE_HOME");
         var home = Quickshell.env("HOME");
         var basePath = cacheHome || (home + "/.cache");

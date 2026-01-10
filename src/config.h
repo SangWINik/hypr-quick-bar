@@ -1,3 +1,8 @@
+// Set custom config directory (overrides XDG_CONFIG_HOME)
+void set_config_dir(const char *dir);
+
+// Set custom cache directory (overrides XDG_CACHE_HOME)
+void set_cache_dir(const char *dir);
 #ifndef CONFIG_H
 #define CONFIG_H
 
