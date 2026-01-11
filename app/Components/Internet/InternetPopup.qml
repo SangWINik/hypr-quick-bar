@@ -3,7 +3,7 @@ import "../Structure"
 
 ModulePopup {
     id: internetPopup
-    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup", "internet"]
+    property var stylePath: ["bar", "popup", "internet"]
     
     popupHeight: contentColumn.implicitHeight + 40
     popupWidth: 250

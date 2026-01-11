@@ -3,7 +3,7 @@ import "../Structure"
 
 ModulePopup {
     id: clockPopup
-    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup", "clock"]
+    property var stylePath: ["bar", "popup", "clock"]
     
     popupHeight: 260
     popupWidth: 260

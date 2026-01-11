@@ -6,7 +6,7 @@ import "../Structure"
 
 ModulePopup {
     id: volumePopup
-    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup", "volume"]
+    property var stylePath: ["bar", "popup", "volume"]
     
     property real volume: 0.0
     property bool muted: false

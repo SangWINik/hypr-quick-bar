@@ -7,26 +7,23 @@ Rectangle {
     // Configurable styling
     property var stylePath: ["bar", "section"]
     
-    property color borderColor: config.getStyle(stylePath, "borderColor", "transparent")
-    property int borderWidth: config.getStyle(stylePath, "borderWidth", 0)
     property int cornerRadius: config.getStyle(stylePath, "radius", 0)
     
     // Padding for content
     property int horizontalPadding: config.getStyle(stylePath, "padding", 0)
-    property int verticalPadding: 0
-    property int sectionSpacing: config.getStyle(stylePath, "spacing", 4)
+    property int verticalPadding: 20
+    property int sectionSpacing: config.getStyle(stylePath, "spacing", 0)
     
     color: config.getStyle(stylePath, "backgroundColor", "transparent")
-    border.color: borderColor
-    border.width: borderWidth
-    radius: cornerRadius
+    border.color: config.getStyle(stylePath, "borderColor", "transparent")
+    border.width: config.getStyle(stylePath, "borderWidth", 0)
+    radius: config.getStyle(stylePath, "radius", 0)
     antialiasing: true
     
     // Only render if there are children
     visible: contentRow.children.length > 0
     
     implicitWidth: contentRow.implicitWidth + horizontalPadding * 2
-    // implicitHeight: contentRow.implicitHeight + verticalPadding * 2
     implicitHeight: config.getStyle(stylePath, "height", 30)
     
     Behavior on implicitWidth {
@@ -44,9 +41,11 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
+        anchors.topMargin: verticalPadding
+        anchors.bottomMargin: verticalPadding
         anchors.leftMargin: horizontalPadding
         anchors.rightMargin: horizontalPadding
-        spacing: sectionSpacing
+        spacing: config.getStyle(stylePath, "spacing", 0)
         
         // Children (modules) will be added here
     }

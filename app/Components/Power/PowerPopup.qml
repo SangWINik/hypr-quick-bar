@@ -4,7 +4,7 @@ import "../Structure"
 
 ModulePopup {
     id: powerPopup
-    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup", "power"]
+    property var stylePath: ["bar", "popup", "power"]
     
     popupHeight: contentColumn.implicitHeight + 40
     popupWidth: 180
