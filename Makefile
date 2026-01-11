@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -O2 -Isrc
 TARGET = hypr-quick-bar
 SRCDIR = src
 BUILDDIR = build
-SRC = $(SRCDIR)/launcher.c $(SRCDIR)/config.c $(SRCDIR)/watcher.c
+SRC = $(SRCDIR)/launcher.c $(SRCDIR)/config.c $(SRCDIR)/watcher.c $(SRCDIR)/lib/cJSON/cJSON.c
 OBJ = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRC))
 
 all: $(TARGET)
@@ -15,6 +15,7 @@ $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

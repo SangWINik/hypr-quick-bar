@@ -4,7 +4,6 @@ Rectangle {
     // Theme accessed via appTheme id from root
     
     // Configurable styling
-    property color backgroundColor: appTheme.colors.bg
     property color borderColor: appTheme.colors.fg
     property int borderWidth: 1
     property int cornerRadius: 20
@@ -14,7 +13,7 @@ Rectangle {
     property int verticalPadding: 0
     property int sectionSpacing: 0
     
-    color: backgroundColor
+    color: config.bar?.section?.backgroundColor || "transparent"
     border.color: borderColor
     border.width: borderWidth
     radius: cornerRadius

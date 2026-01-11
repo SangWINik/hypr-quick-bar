@@ -21,6 +21,10 @@ char* get_processed_config_path(void);
 // Returns newly allocated string that must be freed, or NULL on error
 char* expand_variables(const char *input);
 
+// Substitute {{section.key}} or {{key}} in input using values from env_json (must be a flat JSON object or nested objects)
+// Returns a newly allocated string, or NULL on error
+char* substitute_templates(const char *input, const char *env_json_str);
+
 // Process config.json: expand variables, validate JSON, write processed output
 // Returns 0 on success, -1 on error
 int process_config(void);
