@@ -5,8 +5,10 @@ Rectangle {
     
     // radius: 30
     
+    property var stylePath: ["bar", "section", "module"] 
+
     // Padding for content
-    property int horizontalPadding: 12
+    property int horizontalPadding: config.getStyle(stylePath, "padding", 12)
     property int verticalPadding: 2
     
     // Module click handler
@@ -16,8 +18,8 @@ Rectangle {
     
     default property alias data: contentItem.data
     
-    height: config?.bar?.module?.height ?? 22
-    color: config?.bar?.module?.backgroundColor ?? "transparent"
+    height: config.getStyle(stylePath, "height", 22)
+    color: config.getStyle(stylePath, "backgroundColor", "transparent")
     implicitWidth: contentItem.childrenRect.width + horizontalPadding * 2
     
     MouseArea {
@@ -31,8 +33,9 @@ Rectangle {
     
     Rectangle {
         anchors.fill: parent
-        color: moduleMouseArea.containsMouse ? appTheme.colors.fg_a30 : "transparent"
-        radius: 6
+        
+        color: moduleMouseArea.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
+        radius: config.getStyle(stylePath, "radius", 6)
         z: 0
         visible: root.enableHover
         

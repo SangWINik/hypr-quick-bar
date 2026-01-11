@@ -5,6 +5,9 @@ import "../Structure"
 Module {
     id: workspacesModule
 
+    // Define style path
+    stylePath: ["bar", "section", "module", "components", "workspaces"]
+
     Row {
         anchors.centerIn: parent
         spacing: 8
@@ -39,6 +42,7 @@ Module {
                 
                 sourceComponent: WorkspaceIndicator {
                     workspace: modelData
+                    stylePath: workspacesModule.stylePath
                 }
             }
         }

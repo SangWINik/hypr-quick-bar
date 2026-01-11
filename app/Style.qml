@@ -1,1 +1,0 @@
-/home/maksym/.config/theme/generated/Style.qml

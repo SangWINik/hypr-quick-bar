@@ -3,6 +3,9 @@ import "../Structure"
 
 Module {
     id: powerModule
+    // Style path
+    stylePath: ["bar", "section", "module", "components", "power"]
+    
     width: 45
     
     enableClickArea: true
@@ -13,9 +16,9 @@ Module {
     Text {
         anchors.centerIn: parent
         text: "⏻"
-        color: appTheme.colors.error
+        color: config.getStyle(powerModule.stylePath, "textColor", "#f38ba8")
         font.family: "NotoSansMono Nerd Font"
-        font.pixelSize: appConfig.fontSize + 8
+        font.pixelSize: config.getStyle(powerModule.stylePath, "fontSize", 14) + 8
     }
     
     PowerPopup {

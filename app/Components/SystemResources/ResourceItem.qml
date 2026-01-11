@@ -2,9 +2,12 @@ import QtQuick
 
 Rectangle {
     id: root
+    // Style path - generic for resource items
+    property var stylePath: ["bar", "popup", "item"]
+
     height: 85
     color: "transparent"
-    radius: appTheme.radius.popup
+    radius: config.getStyle(stylePath, "radius", 12)
 
     property string title: ""
     property string subtitle: ""
@@ -110,14 +113,14 @@ Rectangle {
 
             Text {
                 text: root.title
-                color: appTheme.colors.fg
+                color: config.getStyle(root.stylePath, "textColor", "#cdd6f4")
                 font.pixelSize: 13
                 font.weight: Font.Bold
             }
 
             Text {
                 text: root.subtitle
-                color: appTheme.colors.fg_a70
+                color: config.getStyle(root.stylePath, "textColorDim", "#bac2de")
                 font.pixelSize: 11
                 elide: Text.ElideRight
                 width: parent.width
@@ -128,13 +131,13 @@ Rectangle {
 
                 Text {
                     text: root.value
-                    color: appTheme.colors.fg
+                    color: config.getStyle(root.stylePath, "textColor", "#cdd6f4")
                     font.pixelSize: 12
                 }
 
                 Text {
                     text: root.temperature
-                    color: appTheme.colors.fg_a70
+                    color: config.getStyle(root.stylePath, "textColorDim", "#bac2de")
                     font.pixelSize: 12
                     visible: root.temperature !== ""
                 }

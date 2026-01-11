@@ -6,6 +6,9 @@ import "../Structure"
 
 Module {
     id: languageModule
+    // Style path
+    stylePath: ["bar", "section", "module", "components", "language"]
+
     width: 45
     
     enableClickArea: false
@@ -53,8 +56,8 @@ Module {
     Text {
         anchors.centerIn: parent
         text: currentLanguage
-        color: appTheme.colors.fg
-        font.pixelSize: appConfig.fontSize
+        color: config.getStyle(languageModule.stylePath, "textColor", "#cdd6f4")
+        font.pixelSize: config.getStyle(languageModule.stylePath, "fontSize", 14)
         font.bold: true
     }
     

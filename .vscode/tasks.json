@@ -6,7 +6,7 @@
         {
             "label": "Run Development",
             "type": "shell",
-            "command": "./hypr-quick-bar --watch --app-dir ./app --config-dir ./.config --cache-dir ./.cache",
+            "command": "./hypr-quick-bar --watch --app-dir ./app --config-dir ./dev/config --cache-dir ./dev/cache",
             "group": {
                 "kind": "test",
                 "isDefault": true

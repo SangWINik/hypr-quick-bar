@@ -3,6 +3,7 @@ import "../Structure"
 
 ModulePopup {
     id: internetPopup
+    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup", "internet"]
     
     popupHeight: contentColumn.implicitHeight + 40
     popupWidth: 250
@@ -42,7 +43,7 @@ ModulePopup {
                         return "󰖪"; // Unknown/disconnected
                     }
                 }
-                color: appTheme.colors.fg
+                color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                 font.family: "NotoSansMono Nerd Font"
                 font.pixelSize: 24
             }
@@ -63,14 +64,14 @@ ModulePopup {
                             return "Unknown";
                         }
                     }
-                    color: appTheme.colors.fg
+                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                     font.pixelSize: 16
                     font.bold: true
                 }
                 
                 Text {
                     text: internetService.isConnected ? "Connected" : "Not connected"
-                    color: appTheme.colors.fg_a60
+                    color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
                     font.pixelSize: 12
                 }
             }
@@ -88,14 +89,14 @@ ModulePopup {
                 
                 Text {
                     text: "Device:"
-                    color: appTheme.colors.fg_a60
+                    color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
                     font.pixelSize: 12
                     width: 70
                 }
                 
                 Text {
                     text: internetService.deviceName || "N/A"
-                    color: appTheme.colors.fg
+                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                     font.pixelSize: 12
                 }
             }
@@ -106,14 +107,14 @@ ModulePopup {
                 
                 Text {
                     text: "IP Address:"
-                    color: appTheme.colors.fg_a60
+                    color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
                     font.pixelSize: 12
                     width: 70
                 }
                 
                 Text {
                     text: internetService.ipAddress || "N/A"
-                    color: appTheme.colors.fg
+                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                     font.pixelSize: 12
                 }
             }
@@ -125,14 +126,14 @@ ModulePopup {
                 
                 Text {
                     text: "Signal:"
-                    color: appTheme.colors.fg_a60
+                    color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
                     font.pixelSize: 12
                     width: 70
                 }
                 
                 Text {
                     text: internetService.wifiSignalStrength + "%"
-                    color: appTheme.colors.fg
+                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                     font.pixelSize: 12
                 }
             }
@@ -151,7 +152,7 @@ ModulePopup {
             
             Rectangle {
                 anchors.fill: parent
-                color: internetService.wifiToggling ? appTheme.colors.fg_a10 : (parent.containsMouse ? appTheme.colors.fg_a30 : appTheme.colors.fg_a10)
+                color: internetService.wifiToggling ? config.getStyle(stylePath, "dimColor", "#99cdd6f4") : (parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : config.getStyle(stylePath, "dimColor", "#99cdd6f4"))
                 radius: 6
                 opacity: internetService.wifiToggling ? 0.6 : 1.0
                 
@@ -163,7 +164,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: internetService.wifiToggling ? "󰦖" : (internetService.wifiEnabled ? "󰖪" : "󰖩")
-                        color: appTheme.colors.fg
+                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 16
                         rotation: internetService.wifiToggling ? undefined : 0
@@ -180,7 +181,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: internetService.wifiToggling ? "Toggling WiFi..." : (internetService.wifiEnabled ? "Disable WiFi" : "Enable WiFi")
-                        color: appTheme.colors.fg
+                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                         font.pixelSize: 13
                     }
                 }

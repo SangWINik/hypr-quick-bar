@@ -6,6 +6,8 @@ import "../Structure"
 
 Module {
     id: systemTrayModule
+    // Style path
+    stylePath: ["bar", "section", "module", "components", "tray"]
     
     visible: SystemTray.items.values.length > 0
     

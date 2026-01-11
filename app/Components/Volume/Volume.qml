@@ -5,6 +5,9 @@ import "../Structure"
 
 Module {
     id: volumeModule
+    // Style path
+    stylePath: ["bar", "section", "module", "components", "volume"]
+
     width: 45
     
     enableClickArea: true
@@ -74,9 +77,9 @@ Module {
                     return "󰕾"; // High volume
                 }
             }
-            color: appTheme.colors.fg
+            color: config.getStyle(volumeModule.stylePath, "textColor", "#cdd6f4")
             font.family: "NotoSansMono Nerd Font"
-            font.pixelSize: appConfig.fontSize + 4
+            font.pixelSize: config.getStyle(volumeModule.stylePath, "fontSize", 14) + 4
         }
         
         // Volume percentage

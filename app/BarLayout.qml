@@ -17,12 +17,14 @@ Rectangle {
 
     
     // Configuration
-    color: config?.bar?.backgroundColor ?? "transparent"
-    property string barPosition: "bottom"  // "bottom" or "top"
+    property var stylePath: ["bar"]
+    color: config.getStyle(stylePath, "backgroundColor", "transparent")
+    property string barPosition: config.getStyle(stylePath, "position", "bottom")
 
     // Left section
     BarSection {
         id: timeSection
+        stylePath: ["bar", "section"] // Parent provides base path? No, section is specific.
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
 

@@ -4,24 +4,15 @@ import Quickshell.Hyprland
 import QtQuick
 
 // import generated theme
-import "./Style.qml"
+// import generated theme
 import "./Config.qml"
 import "Services"
 
 Scope {
     id: root
-    
-    Style {
-        id: appTheme
-    }
-    
+
     Config {
         id: config
-    }
-    
-    QtObject {
-        id: appConfig
-        property int fontSize: 14
     }
     
     TimeService {
@@ -66,12 +57,12 @@ Scope {
             }
             
             margins {
-                top: config.bar?.margins?.top ?? 8
-                bottom: config.bar?.margins?.bottom ?? 8
-                left: config.bar?.margins?.left ?? 8
-                right: config.bar?.margins?.right ?? 8
+                top: config.getStyle(["bar", "margins"], "top", 8)
+                bottom: config.getStyle(["bar", "margins"], "bottom", 8)
+                left: config.getStyle(["bar", "margins"], "left", 8)
+                right: config.getStyle(["bar", "margins"], "right", 8)
             }
-            implicitHeight: config.bar?.height ?? 32
+            implicitHeight: config.getStyle(["bar"], "height", 32)
             color: "transparent"
 
             BarLayout {

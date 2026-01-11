@@ -1,20 +1,116 @@
 {
-  "bar": {
-    "height": 32,
-    "backgroundColor": "transparent",
-    "margins": {
-      "top": 0,
-      "bottom": 0,
-      "left": 8,
-      "right": 8
-    },
-    "module": {
-        "height": 28,
-        "backgroundColor": "transparent"
-    },
-    "section": {
+  "environmentFile": "~/.config/theme/generated/theme.json",
+  "style": {
+    "bar": {
+      "height": 32,
+      "position": "bottom",
+      "backgroundColor": "transparent",
+      "margins": {
+        "top": 0,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "section": {
         "height": 30,
-        "backgroundColor": ""
+        "backgroundColor": "#1e1e2e",
+        "radius": 12,
+        "padding": 4,
+        "spacing": 4,
+        "borderColor": "transparent",
+        "borderWidth": 0,
+        "module": {
+          "height": 28,
+          "backgroundColor": "transparent",
+          "radius": 8,
+          "padding": 8,
+          "spacing": 4,
+          "textColor": "#cdd6f4",
+          "fontSize": 14,
+          "hoverColor": "#1acdd6f4",
+          "dimColor": "#99cdd6f4",
+          "errorColor": "#f38ba8",
+          "warningColor": "#f9e2af",
+          "accentColor": "#89b4fa",
+          "components": {
+            "clock": {
+              "format": "HH:mm",
+              "fontSize": 14,
+              "textColor": "#cdd6f4"
+            },
+            "calendar": {
+                "textColor": "#cdd6f4",
+                "fontSize": 14
+            },
+            "media": {
+               "textColor": "#cdd6f4",
+               "separatorColor": "#4dcdd6f4",
+               "hoverColor": "#4dcdd6f4",
+               "hoverColorDim": "#1acdd6f4",
+               "fontSize": 14
+            },
+            "workspaces": {
+               "focusedColor": "#89b4fa",
+               "hoveredColor": "#99cdd6f4",
+               "notificationColor": "#f38ba8",
+               "defaultColor": "#cdd6f4",
+               "focusedTextColor": "#1e1e2e",
+               "defaultTextColor": "#1e1e2e",
+               "focusedScale": 1.3,
+               "hoveredScale": 1.08
+            },
+            "power": {
+               "textColor": "#f38ba8",
+               "fontSize": 14
+            },
+            "volume": {
+               "textColor": "#cdd6f4",
+               "fontSize": 14
+            },
+            "internet": {
+               "textColor": "#cdd6f4",
+               "errorColor": "#f38ba8",
+               "fontSize": 14
+            },
+            "systemResources": {
+               "textColor": "#cdd6f4",
+               "textColorDim": "#bac2de",
+               "fontSize": 14
+            },
+            "language": {
+               "textColor": "#cdd6f4",
+               "fontSize": 14
+            },
+            "tray": {
+               "spacing": 8
+            }
+          }
+        }
+      },
+      "popup": {
+          "radius": 12,
+          "backgroundColor": "#e61e1e2e",
+          "borderColor": "#4dcdd6f4",
+          "borderWidth": 1,
+          "textColor": "#cdd6f4",
+          "dimColor": "#99cdd6f4",
+          "accentColor": "#89b4fa",
+          "hoverColor": "#4dcdd6f4",
+          "errorColor": "#f38ba8",
+          "warningColor": "#f9e2af",
+          "item": {
+            "radius": 8,
+            "textColor": "#cdd6f4",
+            "textColorDim": "#bac2de"
+          },
+          "power": {
+            "fontSize": 14
+          },
+          "clock": {
+              "backgroundColor": "#e61e1e2e",
+              "borderColor": "#4dcdd6f4"
+          }
+      }
     }
   }
 }

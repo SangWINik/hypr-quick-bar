@@ -3,6 +3,7 @@ import Quickshell
 
 PopupWindow {
     id: popup
+    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup"]
     
     // The module this popup belongs to
     property var targetModule: null
@@ -18,10 +19,11 @@ PopupWindow {
     property int offset: 0
     
     // Style properties
-    property color backgroundColor: appTheme.colors.bg_a80
-    property color borderColor: appTheme.colors.fg_a50
-    property int borderWidth: 0
-    property int cornerRadius: 10
+    // Style properties
+    property color backgroundColor: config.getStyle(stylePath, "backgroundColor", "#e61e1e2e")
+    property color borderColor: config.getStyle(stylePath, "borderColor", "#4dcdd6f4")
+    property int borderWidth: config.getStyle(stylePath, "borderWidth", 1)
+    property int cornerRadius: config.getStyle(stylePath, "radius", 12)
     
     visible: false
     implicitWidth: popupWidth

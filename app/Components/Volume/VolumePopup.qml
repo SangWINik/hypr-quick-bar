@@ -6,6 +6,7 @@ import "../Structure"
 
 ModulePopup {
     id: volumePopup
+    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup", "volume"]
     
     property real volume: 0.0
     property bool muted: false
@@ -51,7 +52,7 @@ ModulePopup {
                     
                     Rectangle {
                         anchors.fill: parent
-                        color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                        color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                         radius: 6
                         
                         Text {
@@ -67,7 +68,7 @@ ModulePopup {
                                     return "󰕾";
                                 }
                             }
-                            color: appTheme.colors.fg
+                            color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                             font.family: "NotoSansMono Nerd Font"
                             font.pixelSize: 20
                         }
@@ -77,7 +78,7 @@ ModulePopup {
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     text: Math.round(volume * 100) + "%"
-                    color: appTheme.colors.fg
+                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                     font.pixelSize: 18
                     font.bold: true
                 }
@@ -103,13 +104,13 @@ ModulePopup {
                 
                 Rectangle {
                     anchors.fill: parent
-                    color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                    color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                     radius: 6
                     
                     Text {
                         anchors.centerIn: parent
                         text: "󰒓"  // Settings/config icon
-                        color: appTheme.colors.fg
+                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 20
                     }
@@ -142,12 +143,12 @@ ModulePopup {
                     width: qtSlider.availableWidth
                     height: 6
                     radius: 3
-                    color: appTheme.colors.fg_a30
+                    color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
                     
                     Rectangle {
                         width: qtSlider.visualPosition * parent.width
                         height: parent.height
-                        color: appTheme.colors.fg
+                        color: config.getStyle(stylePath, "accentColor", "#89b4fa")
                         radius: 3
                     }
                 }
@@ -158,8 +159,8 @@ ModulePopup {
                     width: 18
                     height: 18
                     radius: 9
-                    color: appTheme.colors.fg
-                    border.color: appTheme.colors.bg
+                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                    border.color: config.getStyle(stylePath, "borderColor", "#4dcdd6f4")
                     border.width: 2
                 }
             }

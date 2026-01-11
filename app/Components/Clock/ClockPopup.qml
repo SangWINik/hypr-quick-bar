@@ -3,6 +3,7 @@ import "../Structure"
 
 ModulePopup {
     id: clockPopup
+    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup", "clock"]
     
     popupHeight: 260
     popupWidth: 260
@@ -19,8 +20,8 @@ ModulePopup {
             width: 220
             height: 220
             radius: 110
-            color: appTheme.colors.bg_a80
-            border.color: appTheme.colors.fg_a30
+            color: config.getStyle(stylePath, "backgroundColor", "#e61e1e2e")
+            border.color: config.getStyle(stylePath, "borderColor", "#4dcdd6f4")
             border.width: 2
             
             // Hour markers
@@ -32,7 +33,7 @@ ModulePopup {
                     y: 10
                     width: index % 3 === 0 ? 3 : 2
                     height: index % 3 === 0 ? 12 : 8
-                    color: appTheme.colors.fg_a60
+                    color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
                     transformOrigin: Item.Top
                     
                     transform: [
@@ -52,7 +53,7 @@ ModulePopup {
                 width: 12
                 height: 12
                 radius: 6
-                color: appTheme.colors.accent
+                color: config.getStyle(stylePath, "accentColor", "#89b4fa")
                 z: 10
             }
         }
@@ -65,7 +66,7 @@ ModulePopup {
             width: 6
             height: 60
             radius: 3
-            color: appTheme.colors.fg
+            color: config.getStyle(stylePath, "textColor", "#cdd6f4")
             transformOrigin: Item.Bottom
             antialiasing: true
             
@@ -85,7 +86,7 @@ ModulePopup {
             width: 4
             height: 85
             radius: 2
-            color: appTheme.colors.fg
+            color: config.getStyle(stylePath, "textColor", "#cdd6f4")
             transformOrigin: Item.Bottom
             antialiasing: true
             
@@ -105,7 +106,7 @@ ModulePopup {
             width: 2
             height: 95
             radius: 1
-            color: appTheme.colors.accent
+            color: config.getStyle(stylePath, "accentColor", "#89b4fa")
             transformOrigin: Item.Bottom
             antialiasing: true
             

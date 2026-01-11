@@ -4,22 +4,25 @@ import QtQuick
 Rectangle {
     required property var workspace
     
+    // Receive style path from parent
+    property var stylePath
+
     // State flags
     property bool isFocused: workspace.focused
     property bool isHovered: mouseArea.containsMouse
     property bool hasNotification: false
     
     // Style properties for each state
-    property color focusedColor: appTheme.colors.accent
-    property color hoveredColor: appTheme.colors.fg_a60
-    property color notificationColor: appTheme.colors.warning
-    property color defaultColor: appTheme.colors.fg
+    property color focusedColor: config.getStyle(stylePath, "focusedColor", "#89b4fa")
+    property color hoveredColor: config.getStyle(stylePath, "hoveredColor", "#99cdd6f4")
+    property color notificationColor: config.getStyle(stylePath, "notificationColor", "#f38ba8")
+    property color defaultColor: config.getStyle(stylePath, "defaultColor", "#cdd6f4")
     
-    property color focusedTextColor: appTheme.colors.bg
-    property color defaultTextColor: appTheme.colors.bg
+    property color focusedTextColor: config.getStyle(stylePath, "focusedTextColor", "#1e1e2e")
+    property color defaultTextColor: config.getStyle(stylePath, "defaultTextColor", "#1e1e2e")
     
-    property real focusedScale: 1.3
-    property real hoveredScale: 1.08
+    property real focusedScale: config.getStyle(stylePath, "focusedScale", 1.3)
+    property real hoveredScale: config.getStyle(stylePath, "hoveredScale", 1.08)
     property real defaultScale: 1.0
     
     width: 18

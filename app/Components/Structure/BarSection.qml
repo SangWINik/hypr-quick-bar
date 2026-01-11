@@ -4,16 +4,19 @@ Rectangle {
     // Theme accessed via appTheme id from root
     
     // Configurable styling
-    property color borderColor: appTheme.colors.fg
-    property int borderWidth: 1
-    property int cornerRadius: 20
+    // Configurable styling
+    property var stylePath: ["bar", "section"]
+    
+    property color borderColor: config.getStyle(stylePath, "borderColor", "transparent")
+    property int borderWidth: config.getStyle(stylePath, "borderWidth", 0)
+    property int cornerRadius: config.getStyle(stylePath, "radius", 0)
     
     // Padding for content
-    property int horizontalPadding: 8
+    property int horizontalPadding: config.getStyle(stylePath, "padding", 0)
     property int verticalPadding: 0
-    property int sectionSpacing: 0
+    property int sectionSpacing: config.getStyle(stylePath, "spacing", 4)
     
-    color: config.bar?.section?.backgroundColor || "transparent"
+    color: config.getStyle(stylePath, "backgroundColor", "transparent")
     border.color: borderColor
     border.width: borderWidth
     radius: cornerRadius
@@ -24,7 +27,7 @@ Rectangle {
     
     implicitWidth: contentRow.implicitWidth + horizontalPadding * 2
     // implicitHeight: contentRow.implicitHeight + verticalPadding * 2
-    implicitHeight: config?.bar?.section?.height ?? 22
+    implicitHeight: config.getStyle(stylePath, "height", 30)
     
     Behavior on implicitWidth {
         NumberAnimation {

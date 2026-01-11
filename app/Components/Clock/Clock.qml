@@ -4,6 +4,9 @@ import "../Structure"
 Module {
     id: clockModule
     
+    // Define style path for this specific module
+    stylePath: ["bar", "section", "module", "components", "clock"]
+    
     enableClickArea: true
     enableHover: true
     
@@ -11,9 +14,9 @@ Module {
     
     Text {
         anchors.centerIn: parent
-        color: appTheme.colors.fg
-        font.pixelSize: appConfig.fontSize
-        text: Qt.formatDateTime(timeService.currentTime, "HH:mm")
+        color: config.getStyle(clockModule.stylePath, "textColor", "#cdd6f4")
+        font.pixelSize: config.getStyle(clockModule.stylePath, "fontSize", 14)
+        text: Qt.formatDateTime(timeService.currentTime, config.getStyle(clockModule.stylePath, "format", "HH:mm"))
     }
     
     ClockPopup {

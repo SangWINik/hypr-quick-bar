@@ -4,6 +4,9 @@ import "../Structure"
 
 Module {
     id: internetModule
+    // Style path
+    stylePath: ["bar", "section", "module", "components", "internet"]
+
     width: 45
     
     enableClickArea: true
@@ -35,9 +38,9 @@ Module {
                 return "󰖪"; // Unknown/disconnected
             }
         }
-        color: internetService.isConnected ? appTheme.colors.fg : appTheme.colors.error
+        color: internetService.isConnected ? config.getStyle(internetModule.stylePath, "textColor", "#cdd6f4") : config.getStyle(internetModule.stylePath, "errorColor", "#f38ba8")
         font.family: "NotoSansMono Nerd Font"
-        font.pixelSize: appConfig.fontSize + 4
+        font.pixelSize: config.getStyle(internetModule.stylePath, "fontSize", 14) + 4
     }
     
     InternetPopup {

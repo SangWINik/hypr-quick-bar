@@ -3,6 +3,9 @@ import "../Structure"
 
 Module {
     id: root
+    // Style path
+    stylePath: ["bar", "section", "module", "components", "systemResources"]
+
     width: 45
     
     enableClickArea: true
@@ -13,9 +16,9 @@ Module {
     Text {
         anchors.centerIn: parent
         text: "󰘚"
-        color: appTheme.colors.fg
+        color: config.getStyle(root.stylePath, "textColor", "#cdd6f4")
         font.family: "NotoSansMono Nerd Font"
-        font.pixelSize: appConfig.fontSize + 4
+        font.pixelSize: config.getStyle(root.stylePath, "fontSize", 14) + 4
     }
     
     SystemResourcesPopup {

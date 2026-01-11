@@ -4,6 +4,9 @@ import "../Structure"
 Module {
     id: mediaModule
     
+    // Style path
+    stylePath: ["bar", "section", "module", "components", "media"]
+    
     // Setting: show all controls when paused (true) or just play button (false)
     property bool showControlsWhenPaused: true
     
@@ -42,13 +45,13 @@ Module {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                 radius: 6
                 
                 Text {
                     anchors.centerIn: parent
                     text: mediaService.status === "Playing" ? "󰏤" : "󰐊"
-                    color: appTheme.colors.fg
+                    color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
                     font.family: "NotoSansMono Nerd Font"
                     font.pixelSize: 18
                 }
@@ -61,7 +64,7 @@ Module {
             anchors.verticalCenter: parent.verticalCenter
             width: 1
             height: 16
-            color: appTheme.colors.fg_a30
+            color: config.getStyle(mediaModule.stylePath, "separatorColor", "#4dcdd6f4")
         }
         
         // Previous button
@@ -77,14 +80,14 @@ Module {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                 radius: 6
                 opacity: parent.enabled ? 1.0 : 0.3
                 
                 Text {
                     anchors.centerIn: parent
                     text: "󰒮"
-                    color: appTheme.colors.fg
+                    color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
                     font.family: "NotoSansMono Nerd Font"
                     font.pixelSize: 16
                 }
@@ -123,8 +126,8 @@ Module {
                         }
                         return fullText
                     }
-                    color: appTheme.colors.fg
-                    font.pixelSize: appConfig.fontSize - 3
+                    color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
+                    font.pixelSize: config.getStyle(mediaModule.stylePath, "fontSize", 14) - 3
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
                 }
@@ -141,7 +144,7 @@ Module {
                     anchors.centerIn: parent
                     width: parent.width
                     height: 4
-                    color: appTheme.colors.fg_a30
+                    color: config.getStyle(mediaModule.stylePath, "separatorColor", "#4dcdd6f4")
                     radius: 2
                     
                     // Progress bar
@@ -150,7 +153,7 @@ Module {
                         anchors.verticalCenter: parent.verticalCenter
                         width: mediaService.length > 0 ? (mediaService.position / mediaService.length) * parent.width : 0
                         height: parent.height
-                        color: appTheme.colors.fg
+                        color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
                         radius: 2
                     }
                 }
@@ -171,7 +174,7 @@ Module {
                     // Visual feedback
                     Rectangle {
                         anchors.fill: parent
-                        color: parent.containsMouse ? appTheme.colors.fg_a10 : "transparent"
+                        color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColorDim", "#1acdd6f4") : "transparent"
                         radius: 2
                     }
                 }
@@ -191,14 +194,14 @@ Module {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                 radius: 6
                 opacity: parent.enabled ? 1.0 : 0.3
                 
                 Text {
                     anchors.centerIn: parent
                     text: "󰒭"
-                    color: appTheme.colors.fg
+                    color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
                     font.family: "NotoSansMono Nerd Font"
                     font.pixelSize: 16
                 }
@@ -211,7 +214,7 @@ Module {
             anchors.verticalCenter: parent.verticalCenter
             width: 1
             height: 16
-            color: appTheme.colors.fg_a30
+            color: config.getStyle(mediaModule.stylePath, "separatorColor", "#4dcdd6f4")
         }
         
         // Volume button
@@ -226,7 +229,7 @@ Module {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                 radius: 6
                 
                 Text {
@@ -242,7 +245,7 @@ Module {
                             return "󰕾"
                         }
                     }
-                    color: appTheme.colors.fg
+                    color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
                     font.family: "NotoSansMono Nerd Font"
                     font.pixelSize: 16
                 }

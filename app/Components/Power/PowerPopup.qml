@@ -4,6 +4,7 @@ import "../Structure"
 
 ModulePopup {
     id: powerPopup
+    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup", "power"]
     
     popupHeight: contentColumn.implicitHeight + 40
     popupWidth: 180
@@ -33,7 +34,7 @@ ModulePopup {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                 radius: 6
                 
                 Row {
@@ -45,15 +46,15 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "⏻"
-                        color: appTheme.colors.error
+                        color: config.getStyle(stylePath, "errorColor", "#f38ba8")
                         font.family: "NotoSansMono Nerd Font"
-                        font.pixelSize: appConfig.fontSize + 8
+                        font.pixelSize: config.getStyle(stylePath, "fontSize", 14) + 8
                     }
                     
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "Power Off"
-                        color: appTheme.colors.fg
+                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                         font.pixelSize: 14
                     }
                 }
@@ -74,7 +75,7 @@ ModulePopup {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                 radius: 6
                 
                 Row {
@@ -86,7 +87,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "󰍃"
-                        color: appTheme.colors.error
+                        color: config.getStyle(stylePath, "errorColor", "#f38ba8")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 16
                     }
@@ -94,7 +95,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "Log Out"
-                        color: appTheme.colors.fg
+                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                         font.pixelSize: 14
                     }
                 }
@@ -115,7 +116,7 @@ ModulePopup {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                 radius: 6
                 
                 Row {
@@ -127,7 +128,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "󰜉"
-                        color: appTheme.colors.warning
+                        color: config.getStyle(stylePath, "warningColor", "#f9e2af")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 18
                     }
@@ -135,7 +136,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "Reboot"
-                        color: appTheme.colors.fg
+                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                         font.pixelSize: 14
                     }
                 }
@@ -156,7 +157,7 @@ ModulePopup {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                 radius: 6
                 
                 Row {
@@ -168,7 +169,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "󰒲"
-                        color: appTheme.colors.warning
+                        color: config.getStyle(stylePath, "warningColor", "#f9e2af")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 18
                     }
@@ -176,7 +177,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "Sleep"
-                        color: appTheme.colors.fg
+                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                         font.pixelSize: 14
                     }
                 }

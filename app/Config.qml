@@ -29,7 +29,53 @@ Scope {
         running: false
         
         stdout: StdioCollector {
-            onStreamFinished: root.bar = JSON.parse(this.text).bar
+            onStreamFinished: {
+                var json = JSON.parse(this.text)
+                root.style = json.style || {}
+            }
         }
+    }
+
+    property var style: ({})
+
+    // Recursive style lookup
+    // path: array of strings, e.g. ["bar", "section", "module", "components", "clock"]
+    // property: string, e.g. "color"
+    // defaultValue: any
+    function getStyle(path, property, defaultValue) {
+        if (!path || !Array.isArray(path)) return defaultValue;
+        if (!root.style || !root.style.bar) return defaultValue;
+        
+        var candidates = [];
+        
+        var resolve = function(obj, pathArr) {
+            if (!obj || !pathArr) return null;
+            var curr = obj;
+            for (var i = 0; i < pathArr.length; i++) {
+                if (!curr) return null;
+                curr = curr[pathArr[i]];
+            }
+            return curr;
+        }
+
+        var obj = resolve(root.style, path);
+        if (obj && obj[property] !== undefined) return obj[property];
+        
+        var workingPath = path.slice();
+        while (workingPath.length > 0) {
+            // Remove last segment
+             var segment = workingPath.pop();
+             
+             // If we just popped a specific name (like 'clock'), we might check if previous was 'components'
+             if (workingPath.length > 0 && workingPath[workingPath.length-1] === 'components') {
+                 workingPath.pop(); // Remove 'components' to get to 'module'
+             }
+             
+             // Now check property on this level
+             obj = resolve(root.style, workingPath);
+             if (obj && obj[property] !== undefined) return obj[property];
+        }
+        
+        return defaultValue;
     }
 }

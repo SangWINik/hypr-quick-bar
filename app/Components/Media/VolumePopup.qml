@@ -4,6 +4,7 @@ import "../Structure"
 
 ModulePopup {
     id: volumePopup
+    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup", "volume"]
     
     popupHeight: 180
     popupWidth: 60
@@ -37,7 +38,7 @@ ModulePopup {
                         anchors.top: parent.top
                         width: 6
                         height: parent.height
-                        color: appTheme.colors.fg_a30
+                        color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
                         radius: 3
                         
                         // Filled portion (from bottom)
@@ -46,7 +47,7 @@ ModulePopup {
                             anchors.horizontalCenter: parent.horizontalCenter
                             width: parent.width
                             height: mediaService.volume * parent.height
-                            color: appTheme.colors.fg
+                            color: config.getStyle(stylePath, "accentColor", "#89b4fa")
                             radius: 3
                         }
                     }
@@ -59,8 +60,8 @@ ModulePopup {
                         width: 18
                         height: 18
                         radius: 9
-                        color: appTheme.colors.fg
-                        border.color: appTheme.colors.bg
+                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                        border.color: config.getStyle(stylePath, "borderColor", "#4dcdd6f4")
                         border.width: 2
                     }
                     
@@ -99,7 +100,7 @@ ModulePopup {
                         // Visual feedback
                         Rectangle {
                             anchors.fill: parent
-                            color: parent.containsMouse || parent.dragging ? appTheme.colors.fg_a10 : "transparent"
+                            color: parent.containsMouse || parent.dragging ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                             radius: 3
                         }
                     }
@@ -123,7 +124,7 @@ ModulePopup {
                     
                     Rectangle {
                         anchors.fill: parent
-                        color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                        color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                         radius: 6
                         
                         Text {
@@ -139,7 +140,7 @@ ModulePopup {
                                     return "󰕾"
                                 }
                             }
-                            color: appTheme.colors.fg
+                            color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                             font.family: "NotoSansMono Nerd Font"
                             font.pixelSize: 20
                         }

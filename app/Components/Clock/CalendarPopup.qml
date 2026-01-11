@@ -3,6 +3,7 @@ import "../Structure"
 
 ModulePopup {
     id: calendarPopup
+    property var stylePath: targetModule ? targetModule.stylePath : ["bar", "popup", "calendar"]
     
     popupHeight: contentColumn.implicitHeight + 40
     popupWidth: 280
@@ -79,13 +80,13 @@ ModulePopup {
                 
                 Rectangle {
                     anchors.fill: parent
-                    color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                    color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                     radius: 6
                     
                     Text {
                         anchors.centerIn: parent
                         text: "󰁍"
-                        color: appTheme.colors.fg
+                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 18
                     }
@@ -100,7 +101,7 @@ ModulePopup {
                 Text {
                     anchors.centerIn: parent
                     text: calendarPopup.getMonthName(calendarPopup.displayMonth) + " " + calendarPopup.displayYear
-                    color: appTheme.colors.fg
+                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                     font.pixelSize: 16
                     font.bold: true
                 }
@@ -116,13 +117,13 @@ ModulePopup {
                 
                 Rectangle {
                     anchors.fill: parent
-                    color: parent.containsMouse ? appTheme.colors.fg_a30 : "transparent"
+                    color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
                     radius: 6
                     
                     Text {
                         anchors.centerIn: parent
                         text: "󰁔"
-                        color: appTheme.colors.fg
+                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 18
                     }
@@ -148,7 +149,7 @@ ModulePopup {
                     Text {
                         anchors.centerIn: parent
                         text: modelData
-                        color: appTheme.colors.fg_a60
+                        color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
                         font.pixelSize: 11
                         font.bold: true
                     }
@@ -178,7 +179,7 @@ ModulePopup {
                     
                     color: {
                         if (isCurrentDay) {
-                            return appTheme.colors.accent
+                            return config.getStyle(stylePath, "accentColor", "#89b4fa")
                         } else if (isValidDay) {
                             return "transparent"
                         } else {
@@ -191,7 +192,7 @@ ModulePopup {
                     Text {
                         anchors.centerIn: parent
                         text: parent.isValidDay ? parent.dayNumber : ""
-                        color: parent.isCurrentDay ? appTheme.colors.bg : appTheme.colors.fg
+                        color: parent.isCurrentDay ? config.getStyle(stylePath, "backgroundColor", "#1e1e2e") : config.getStyle(stylePath, "textColor", "#cdd6f4")
                         font.pixelSize: 13
                         font.bold: parent.isCurrentDay
                     }
