@@ -28,7 +28,7 @@ Item {
     // Continuous metadata monitoring process (event-based)
     property var metadataMonitor: Process {
         running: true
-        command: ["playerctl", "metadata", "--follow", "--format", "{{playerName}}|{{status}}|{{title}}|{{artist}}|{{album}}|{{mpris:length}}|{{volume}}|{{position}}"]
+        command: ["playerctl", "metadata", "--follow", "--format", "{{playerName}}|||{{status}}|||{{title}}|||{{artist}}|||{{album}}|||{{mpris:length}}|||{{volume}}|||{{position}}"]
         
         stdout: SplitParser {
             splitMarker: "\n"
@@ -45,37 +45,37 @@ Item {
     }
     
     function parseMetadata(line) {
-        var parts = line.split("|")
+        var parts = line.split("|||");
         if (parts.length !== 8) {
             status = "Stopped";
-            console.warn("MediaService: Unexpected metadata format from playerctl:", line)
-            return
+            console.warn("MediaService: Unexpected metadata format from playerctl. Expected 8 parts but got " + parts.length + ": " + line);
+            return;
         }
-        
-        var newPlayerName = parts[0] || ""
-        var newStatus = parts[1] || "Stopped"
-        
+
+        var newPlayerName = parts[0] || "";
+        var newStatus = parts[1] || "Stopped";
+
         // Priority: Don't switch away from a playing player to a different player
         if (status === "Playing" && playerName !== "" && playerName !== newPlayerName) {
-            console.log("MediaService: Ignoring", newPlayerName, "because", playerName, "is currently playing")
-            return
+            console.log("MediaService: Ignoring", newPlayerName, "because", playerName, "is currently playing");
+            return;
         }
-        
-        playerName = newPlayerName
-        status = newStatus
-        title = parts[2] || "Unknown"
-        artist = parts[3] || ""
-        album = parts[4] || ""
-        length = parseFloat(parts[5] || "0")
-        volume = parseFloat(parts[6] || "0.5")
-        position = parseFloat(parts[7] || "0") // for some reason Spotify reports wrong position when first started
-        
+
+        playerName = newPlayerName;
+        status = newStatus;
+        title = parts[2] || "Unknown";
+        artist = parts[3] || "";
+        album = parts[4] || "";
+        length = parseFloat(parts[5] || "0");
+        volume = parseFloat(parts[6] || "0.5");
+        position = parseFloat(parts[7] || "0"); // for some reason Spotify reports wrong position when first started
+
         // Update capabilities
-        canControl = status !== "Stopped"
-        canPlay = status === "Paused"
-        canPause = status === "Playing"
-        canGoPrevious = canControl
-        canGoNext = canControl
+        canControl = status !== "Stopped";
+        canPlay = status === "Paused";
+        canPause = status === "Playing";
+        canGoPrevious = canControl;
+        canGoNext = canControl;
     }
     
     // Control processes
