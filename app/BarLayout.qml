@@ -9,6 +9,7 @@ import "Components/Power"
 import "Components/SystemResources"
 import "Components/SystemTray"
 import "Components/Media"
+import "Components/Weather"
 import "Components/Structure"
 
 Rectangle {
@@ -32,6 +33,9 @@ Rectangle {
         }
         
         Calendar {
+        }
+
+        Weather {
         }
     }
 

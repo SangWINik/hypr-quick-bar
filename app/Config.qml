@@ -32,11 +32,13 @@ Scope {
             onStreamFinished: {
                 var json = JSON.parse(this.text)
                 root.style = json.style || {}
+                root.components = json.components || {}
             }
         }
     }
 
     property var style: ({})
+    property var components: ({})
 
     // Recursive style lookup
     // path: array of strings, e.g. ["bar", "section", "module", "components", "clock"]
@@ -75,6 +77,30 @@ Scope {
              obj = resolve(root.style, workingPath);
              if (obj && obj[property] !== undefined) return obj[property];
         }
+        
+        return defaultValue;
+    }
+
+    // Generic config lookup for components
+    // path: array of strings, e.g. ["weather"]
+    // property: string, e.g. "location"
+    // defaultValue: any
+    function getConfig(path, property, defaultValue) {
+        if (!path || !Array.isArray(path)) return defaultValue;
+        if (!root.components) return defaultValue;
+
+        var resolve = function(obj, pathArr) {
+            if (!obj || !pathArr) return null;
+            var curr = obj;
+            for (var i = 0; i < pathArr.length; i++) {
+                if (!curr) return null;
+                curr = curr[pathArr[i]];
+            }
+            return curr;
+        }
+
+        var obj = resolve(root.components, path);
+        if (obj && obj[property] !== undefined) return obj[property];
         
         return defaultValue;
     }

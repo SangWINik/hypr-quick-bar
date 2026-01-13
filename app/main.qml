@@ -27,6 +27,10 @@ Scope {
         id: systemResourcesService
     }
     
+    WeatherService {
+        id: weatherService
+    }
+    
     MediaService {
         id: mediaService
     }
