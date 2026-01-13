@@ -2,14 +2,14 @@ import QtQuick
 
 Rectangle {
     id: root
-    
-    // radius: 30
-    
     property var stylePath: ["bar", "section", "module"] 
 
     // Padding for content
-    property int horizontalPadding: config.getStyle(stylePath, "padding", 12)
-    property int verticalPadding: 2
+    property int horizontalPadding: config.getStyle(stylePath, "paddingX", 12)
+
+    implicitHeight: config.getStyle(stylePath, "height", 22)
+    implicitWidth: contentItem.childrenRect.width + horizontalPadding * 2
+    color: config.getStyle(stylePath, "backgroundColor", "transparent")
     
     // Module click handler
     signal clicked()
@@ -17,10 +17,7 @@ Rectangle {
     property bool enableHover: false
     
     default property alias data: contentItem.data
-    
-    height: config.getStyle(stylePath, "height", 22)
-    color: config.getStyle(stylePath, "backgroundColor", "transparent")
-    implicitWidth: contentItem.childrenRect.width + horizontalPadding * 2
+
     
     MouseArea {
         id: moduleMouseArea

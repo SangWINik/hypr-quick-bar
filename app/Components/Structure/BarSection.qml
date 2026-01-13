@@ -1,30 +1,23 @@
 import QtQuick
 
 Rectangle {
-    // Theme accessed via appTheme id from root
-    
-    // Configurable styling
-    // Configurable styling
     property var stylePath: ["bar", "section"]
     
-    property int cornerRadius: config.getStyle(stylePath, "radius", 0)
-    
-    // Padding for content
-    property int horizontalPadding: config.getStyle(stylePath, "padding", 0)
-    property int verticalPadding: 20
+    property int horizontalPadding: config.getStyle(stylePath, "paddingX", 0)
     property int sectionSpacing: config.getStyle(stylePath, "spacing", 0)
+
+    implicitHeight: config.getStyle(stylePath, "height", 30)
+    implicitWidth: contentRow.implicitWidth + horizontalPadding * 2
     
     color: config.getStyle(stylePath, "backgroundColor", "transparent")
+    radius: config.getStyle(stylePath, "radius", 0)
     border.color: config.getStyle(stylePath, "borderColor", "transparent")
     border.width: config.getStyle(stylePath, "borderWidth", 0)
-    radius: config.getStyle(stylePath, "radius", 0)
+    
     antialiasing: true
     
     // Only render if there are children
     visible: contentRow.children.length > 0
-    
-    implicitWidth: contentRow.implicitWidth + horizontalPadding * 2
-    implicitHeight: config.getStyle(stylePath, "height", 30)
     
     Behavior on implicitWidth {
         NumberAnimation {
@@ -41,11 +34,9 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.topMargin: verticalPadding
-        anchors.bottomMargin: verticalPadding
         anchors.leftMargin: horizontalPadding
         anchors.rightMargin: horizontalPadding
-        spacing: config.getStyle(stylePath, "spacing", 0)
+        spacing: sectionSpacing
         
         // Children (modules) will be added here
     }
