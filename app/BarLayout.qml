@@ -12,15 +12,14 @@ import "Components/Media"
 import "Components/Weather"
 import "Components/Structure"
 
-Rectangle {
+StyledRectangle {
     id: barLayout
     anchors.fill: parent
 
     
     // Configuration
-    property var stylePath: ["bar"]
-    color: config.getStyle(stylePath, "backgroundColor", "transparent")
-    property string barPosition: config.getStyle(stylePath, "position", "bottom")
+    stylePath: ["bar"]
+    property string barPosition: config.getStyle(stylePath, "position") || "bottom"
 
     // Left section
     BarSection {

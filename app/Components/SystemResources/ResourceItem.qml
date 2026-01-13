@@ -7,7 +7,7 @@ Rectangle {
 
     height: 85
     color: "transparent"
-    radius: config.getStyle(stylePath, "radius", 12)
+    radius: config.getStyle(stylePath, "radius")
 
     property string title: ""
     property string subtitle: ""
@@ -113,14 +113,14 @@ Rectangle {
 
             Text {
                 text: root.title
-                color: config.getStyle(root.stylePath, "textColor", "#cdd6f4")
+                color: config.getStyle(root.stylePath, "textColor")
                 font.pixelSize: 13
                 font.weight: Font.Bold
             }
 
             Text {
                 text: root.subtitle
-                color: config.getStyle(root.stylePath, "textColorDim", "#bac2de")
+                color: config.getStyle(root.stylePath, "dimColor")
                 font.pixelSize: 11
                 elide: Text.ElideRight
                 width: parent.width
@@ -131,13 +131,13 @@ Rectangle {
 
                 Text {
                     text: root.value
-                    color: config.getStyle(root.stylePath, "textColor", "#cdd6f4")
+                    color: config.getStyle(root.stylePath, "textColor")
                     font.pixelSize: 12
                 }
 
                 Text {
                     text: root.temperature
-                    color: config.getStyle(root.stylePath, "textColorDim", "#bac2de")
+                    color: config.getStyle(root.stylePath, "dimColor")
                     font.pixelSize: 12
                     visible: root.temperature !== ""
                 }

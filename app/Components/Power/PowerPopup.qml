@@ -34,7 +34,7 @@ ModulePopup {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
+                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor") : "transparent"
                 radius: 6
                 
                 Row {
@@ -46,15 +46,15 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "⏻"
-                        color: config.getStyle(stylePath, "errorColor", "#f38ba8")
+                        color: config.getStyle(stylePath, "errorColor")
                         font.family: "NotoSansMono Nerd Font"
-                        font.pixelSize: config.getStyle(stylePath, "fontSize", 14) + 8
+                        font.pixelSize: config.getStyle(stylePath, "fontSize") + 8
                     }
                     
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "Power Off"
-                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                        color: config.getStyle(stylePath, "textColor")
                         font.pixelSize: 14
                     }
                 }
@@ -75,7 +75,7 @@ ModulePopup {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
+                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor") : "transparent"
                 radius: 6
                 
                 Row {
@@ -87,7 +87,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "󰍃"
-                        color: config.getStyle(stylePath, "errorColor", "#f38ba8")
+                        color: config.getStyle(stylePath, "errorColor")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 16
                     }
@@ -95,7 +95,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "Log Out"
-                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                        color: config.getStyle(stylePath, "textColor")
                         font.pixelSize: 14
                     }
                 }
@@ -116,7 +116,7 @@ ModulePopup {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
+                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor") : "transparent"
                 radius: 6
                 
                 Row {
@@ -128,7 +128,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "󰜉"
-                        color: config.getStyle(stylePath, "warningColor", "#f9e2af")
+                        color: config.getStyle(stylePath, "warningColor")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 18
                     }
@@ -136,7 +136,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "Reboot"
-                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                        color: config.getStyle(stylePath, "textColor")
                         font.pixelSize: 14
                     }
                 }
@@ -157,7 +157,7 @@ ModulePopup {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
+                color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor") : "transparent"
                 radius: 6
                 
                 Row {
@@ -169,7 +169,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "󰒲"
-                        color: config.getStyle(stylePath, "warningColor", "#f9e2af")
+                        color: config.getStyle(stylePath, "warningColor")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 18
                     }
@@ -177,7 +177,7 @@ ModulePopup {
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "Sleep"
-                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                        color: config.getStyle(stylePath, "textColor")
                         font.pixelSize: 14
                     }
                 }

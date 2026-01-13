@@ -264,18 +264,43 @@ char* substitute_templates(const char *input, const char *env_json_str) {
     return output;
 }
 
-// Process config.json: expand variables and validate JSON
+    // Process config.json: expand variables and validate JSON
 int process_config(void) {
     char *config_file = get_config_path();
-    if (!config_file) {
-        fprintf(stderr, "cannot determine config path\n");
-        return -1;
+    FILE *in = NULL;
+    
+    if (config_file) {
+        in = fopen(config_file, "r");
     }
-    FILE *in = fopen(config_file, "r");
+
     if (!in) {
-        fprintf(stderr, "cannot open %s: %s\n", config_file, strerror(errno));
+        // Config file missing or unreadable - write empty JSON to processed path and continue
+        if (config_file) {
+             fprintf(stderr, "notice: cannot open %s (%s), using defaults\n", config_file, strerror(errno));
+        } else {
+             fprintf(stderr, "notice: cannot determine config path, using defaults\n");
+        }
+
+        char *processed_path = get_processed_config_path();
+        if (!processed_path) return -1;
+        
+        // Ensure directory exists
+        char *slash = strrchr(processed_path, '/');
+        if (slash) {
+            *slash = '\0';
+            mkdir(processed_path, 0755);
+            *slash = '/';
+        }
+
+        FILE *out = fopen(processed_path, "w");
+        if (out) {
+            fputs("{}", out);
+            fclose(out);
+            return 0;
+        }
         return -1;
     }
+
     fseek(in, 0, SEEK_END);
     long file_size = ftell(in);
     fseek(in, 0, SEEK_SET);
@@ -287,6 +312,7 @@ int process_config(void) {
     fread(content, 1, file_size, in);
     content[file_size] = '\0';
     fclose(in);
+
 
     // Use cJSON to parse config and check for environmentFile
     cJSON *root = cJSON_Parse(content);

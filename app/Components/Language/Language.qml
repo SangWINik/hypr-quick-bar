@@ -56,8 +56,8 @@ Module {
     Text {
         anchors.centerIn: parent
         text: currentLanguage
-        color: config.getStyle(languageModule.stylePath, "textColor", "#cdd6f4")
-        font.pixelSize: config.getStyle(languageModule.stylePath, "fontSize", 14)
+        color: config.getStyle(languageModule.stylePath, "textColor")
+        font.pixelSize: config.getStyle(languageModule.stylePath, "fontSize")
         font.bold: true
     }
     

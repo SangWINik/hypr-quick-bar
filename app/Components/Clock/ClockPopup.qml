@@ -20,8 +20,8 @@ ModulePopup {
             width: 220
             height: 220
             radius: 110
-            color: config.getStyle(stylePath, "backgroundColor", "#e61e1e2e")
-            border.color: config.getStyle(stylePath, "borderColor", "#4dcdd6f4")
+            color: config.getStyle(stylePath, "backgroundColor")
+            border.color: config.getStyle(stylePath, "borderColor")
             border.width: 2
             
             // Hour markers
@@ -33,7 +33,7 @@ ModulePopup {
                     y: 10
                     width: index % 3 === 0 ? 3 : 2
                     height: index % 3 === 0 ? 12 : 8
-                    color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
+                    color: config.getStyle(stylePath, "dimColor")
                     transformOrigin: Item.Top
                     
                     transform: [
@@ -53,7 +53,7 @@ ModulePopup {
                 width: 12
                 height: 12
                 radius: 6
-                color: config.getStyle(stylePath, "accentColor", "#89b4fa")
+                color: config.getStyle(stylePath, "accentColor")
                 z: 10
             }
         }
@@ -66,7 +66,7 @@ ModulePopup {
             width: 6
             height: 60
             radius: 3
-            color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+            color: config.getStyle(stylePath, "textColor")
             transformOrigin: Item.Bottom
             antialiasing: true
             
@@ -86,7 +86,7 @@ ModulePopup {
             width: 4
             height: 85
             radius: 2
-            color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+            color: config.getStyle(stylePath, "textColor")
             transformOrigin: Item.Bottom
             antialiasing: true
             
@@ -106,7 +106,7 @@ ModulePopup {
             width: 2
             height: 95
             radius: 1
-            color: config.getStyle(stylePath, "accentColor", "#89b4fa")
+            color: config.getStyle(stylePath, "accentColor")
             transformOrigin: Item.Bottom
             antialiasing: true
             

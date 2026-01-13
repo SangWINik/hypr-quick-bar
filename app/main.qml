@@ -61,12 +61,12 @@ Scope {
             }
             
             margins {
-                top: config.getStyle(["bar", "margins"], "top", 8)
-                bottom: config.getStyle(["bar", "margins"], "bottom", 8)
-                left: config.getStyle(["bar", "margins"], "left", 8)
-                right: config.getStyle(["bar", "margins"], "right", 8)
+                top: config.getStyle(["bar", "margins"], "top")
+                bottom: config.getStyle(["bar", "margins"], "bottom")
+                left: config.getStyle(["bar", "margins"], "left")
+                right: config.getStyle(["bar", "margins"], "right")
             }
-            implicitHeight: config.getStyle(["bar"], "height", 32)
+            implicitHeight: config.getStyle(["bar"], "height")
             color: "transparent"
 
             BarLayout {

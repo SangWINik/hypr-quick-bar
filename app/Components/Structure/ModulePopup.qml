@@ -18,12 +18,6 @@ PopupWindow {
     // Offset from module (negative = above for bottom bar)
     property int offset: 0
     
-    // Style properties
-    property color backgroundColor: config.getStyle(stylePath, "backgroundColor", "#e61e1e2e")
-    property color borderColor: config.getStyle(stylePath, "borderColor", "#4dcdd6f4")
-    property int borderWidth: config.getStyle(stylePath, "borderWidth", 1)
-    property int cornerRadius: config.getStyle(stylePath, "radius", 12)
-    
     visible: false
     implicitWidth: popupWidth
     implicitHeight: popupHeight
@@ -68,13 +62,10 @@ PopupWindow {
         }
     }
     
-    Rectangle {
+    StyledRectangle {
         id: background
         anchors.fill: parent
-        color: popup.backgroundColor
-        border.color: popup.borderColor
-        border.width: popup.borderWidth
-        radius: popup.cornerRadius
+        stylePath: popup.stylePath
         
         // Opacity animation
         opacity: popup.animationProgress

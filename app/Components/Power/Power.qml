@@ -16,9 +16,9 @@ Module {
     Text {
         anchors.centerIn: parent
         text: "⏻"
-        color: config.getStyle(powerModule.stylePath, "textColor", "#f38ba8")
+        color: config.getStyle(powerModule.stylePath, "textColor")
         font.family: "NotoSansMono Nerd Font"
-        font.pixelSize: config.getStyle(powerModule.stylePath, "fontSize", 14) + 8
+        font.pixelSize: config.getStyle(powerModule.stylePath, "fontSize") + 8
     }
     
     PowerPopup {

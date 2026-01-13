@@ -74,7 +74,7 @@
             },
             "systemResources": {
                "textColor": "#cdd6f4",
-               "textColorDim": "#bac2de",
+               "dimColor": "#bac2de",
                "fontSize": 14
             },
             "language": {
@@ -101,7 +101,7 @@
           "item": {
             "radius": 8,
             "textColor": "#cdd6f4",
-            "textColorDim": "#bac2de"
+            "dimColor": "#bac2de"
           },
           "power": {
             "fontSize": 14

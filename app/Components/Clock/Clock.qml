@@ -14,9 +14,9 @@ Module {
     
     Text {
         anchors.centerIn: parent
-        color: config.getStyle(clockModule.stylePath, "textColor", "#cdd6f4")
-        font.pixelSize: config.getStyle(clockModule.stylePath, "fontSize", 14)
-        text: Qt.formatDateTime(timeService.currentTime, config.getStyle(clockModule.stylePath, "format", "HH:mm"))
+        color: config.getStyle(clockModule.stylePath, "textColor")
+        font.pixelSize: config.getStyle(clockModule.stylePath, "fontSize")
+        text: Qt.formatDateTime(timeService.currentTime, config.getComponentConfig("clock", "format"))
     }
     
     ClockPopup {

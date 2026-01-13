@@ -27,7 +27,7 @@ ModulePopup {
                 
                 Text {
                     text: weatherService.getWeatherIcon(weatherService.weatherCode)
-                    color: config.getStyle(stylePath, "accentColor", "#89b4fa")
+                    color: config.getStyle(stylePath, "accentColor")
                     font.family: "NotoSansMono Nerd Font"
                     font.pixelSize: 48
                 }
@@ -35,7 +35,7 @@ ModulePopup {
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     text: weatherService.temperature
-                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                    color: config.getStyle(stylePath, "textColor")
                     font.pixelSize: 32
                     font.bold: true
                 }
@@ -46,7 +46,7 @@ ModulePopup {
                 width: parent.width
                 horizontalAlignment: Text.AlignHCenter
                 text: (weatherService.locationName || "Detecting...") + " • " + Qt.formatDateTime(new Date(), "ddd, MMM d")
-                color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                color: config.getStyle(stylePath, "textColor")
                 font.pixelSize: 15
                 font.bold: true
                 elide: Text.ElideRight
@@ -56,7 +56,7 @@ ModulePopup {
         Rectangle {
             width: parent.width
             height: 1
-            color: config.getStyle(stylePath, "textColorDim", "#bac2de")
+            color: config.getStyle(stylePath, "dimColor")
             opacity: 0.3
         }
         
@@ -74,14 +74,14 @@ ModulePopup {
                     Text {
                         width: 50
                         text: modelData.day
-                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                        color: config.getStyle(stylePath, "textColor")
                         font.pixelSize: 13
                     }
                     
                     Text {
                         width: 40
                         text: weatherService.getWeatherIcon(modelData.code)
-                        color: config.getStyle(stylePath, "accentColor", "#89b4fa")
+                        color: config.getStyle(stylePath, "accentColor")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 14
                         horizontalAlignment: Text.AlignHCenter
@@ -94,7 +94,7 @@ ModulePopup {
                         Text {
                             anchors.right: parent.right
                             text: modelData.max + " / " + modelData.min
-                            color: config.getStyle(stylePath, "textColorDim", "#bac2de")
+                            color: config.getStyle(stylePath, "dimColor")
                             font.pixelSize: 13
                         }
                     }

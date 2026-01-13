@@ -80,13 +80,13 @@ ModulePopup {
                 
                 Rectangle {
                     anchors.fill: parent
-                    color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
+                    color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor") : "transparent"
                     radius: 6
                     
                     Text {
                         anchors.centerIn: parent
                         text: "󰁍"
-                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                        color: config.getStyle(stylePath, "textColor")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 18
                     }
@@ -101,7 +101,7 @@ ModulePopup {
                 Text {
                     anchors.centerIn: parent
                     text: calendarPopup.getMonthName(calendarPopup.displayMonth) + " " + calendarPopup.displayYear
-                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                    color: config.getStyle(stylePath, "textColor")
                     font.pixelSize: 16
                     font.bold: true
                 }
@@ -117,13 +117,13 @@ ModulePopup {
                 
                 Rectangle {
                     anchors.fill: parent
-                    color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
+                    color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor") : "transparent"
                     radius: 6
                     
                     Text {
                         anchors.centerIn: parent
                         text: "󰁔"
-                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                        color: config.getStyle(stylePath, "textColor")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 18
                     }
@@ -149,7 +149,7 @@ ModulePopup {
                     Text {
                         anchors.centerIn: parent
                         text: modelData
-                        color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
+                        color: config.getStyle(stylePath, "dimColor")
                         font.pixelSize: 11
                         font.bold: true
                     }
@@ -179,7 +179,7 @@ ModulePopup {
                     
                     color: {
                         if (isCurrentDay) {
-                            return config.getStyle(stylePath, "accentColor", "#89b4fa")
+                            return config.getStyle(stylePath, "accentColor")
                         } else if (isValidDay) {
                             return "transparent"
                         } else {
@@ -192,7 +192,7 @@ ModulePopup {
                     Text {
                         anchors.centerIn: parent
                         text: parent.isValidDay ? parent.dayNumber : ""
-                        color: parent.isCurrentDay ? config.getStyle(stylePath, "backgroundColor", "#1e1e2e") : config.getStyle(stylePath, "textColor", "#cdd6f4")
+                        color: parent.isCurrentDay ? config.getStyle(stylePath, "backgroundColor") : config.getStyle(stylePath, "textColor")
                         font.pixelSize: 13
                         font.bold: parent.isCurrentDay
                     }

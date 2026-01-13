@@ -77,9 +77,9 @@ Module {
                     return "󰕾"; // High volume
                 }
             }
-            color: config.getStyle(volumeModule.stylePath, "textColor", "#cdd6f4")
+            color: config.getStyle(volumeModule.stylePath, "textColor")
             font.family: "NotoSansMono Nerd Font"
-            font.pixelSize: config.getStyle(volumeModule.stylePath, "fontSize", 14) + 4
+            font.pixelSize: config.getStyle(volumeModule.stylePath, "fontSize") + 4
         }
         
         // Volume percentage

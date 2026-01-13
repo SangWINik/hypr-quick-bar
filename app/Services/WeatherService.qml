@@ -15,7 +15,7 @@ QtObject {
     property double longitude: 0.0
     property bool hasCoordinates: false
     
-    property int refreshInterval: config.getConfig(["weather"], "refreshIntervalMinutes", 30)
+    property int refreshInterval: config.getComponentConfig("weather", "refreshIntervalMinutes")
     
     // Timer to trigger refresh
     property var refreshTimer: Timer {

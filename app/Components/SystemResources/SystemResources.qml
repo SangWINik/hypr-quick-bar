@@ -16,9 +16,9 @@ Module {
     Text {
         anchors.centerIn: parent
         text: "󰘚"
-        color: config.getStyle(root.stylePath, "textColor", "#cdd6f4")
+        color: config.getStyle(root.stylePath, "textColor")
         font.family: "NotoSansMono Nerd Font"
-        font.pixelSize: config.getStyle(root.stylePath, "fontSize", 14) + 4
+        font.pixelSize: config.getStyle(root.stylePath, "fontSize") + 4
     }
     
     SystemResourcesPopup {

@@ -38,9 +38,9 @@ Module {
                 return "󰖪"; // Unknown/disconnected
             }
         }
-        color: internetService.isConnected ? config.getStyle(internetModule.stylePath, "textColor", "#cdd6f4") : config.getStyle(internetModule.stylePath, "errorColor", "#f38ba8")
+        color: internetService.isConnected ? config.getStyle(internetModule.stylePath, "textColor") : config.getStyle(internetModule.stylePath, "errorColor")
         font.family: "NotoSansMono Nerd Font"
-        font.pixelSize: config.getStyle(internetModule.stylePath, "fontSize", 14) + 4
+        font.pixelSize: config.getStyle(internetModule.stylePath, "fontSize") + 4
     }
     
     InternetPopup {

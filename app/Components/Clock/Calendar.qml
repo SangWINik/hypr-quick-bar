@@ -16,8 +16,8 @@ Module {
     Text {
         anchors.centerIn: parent
         text: Qt.formatDateTime(timeService.currentTime, "ddd, d MMM")
-        color: config.getStyle(calendarModule.stylePath, "textColor", "#cdd6f4")
-        font.pixelSize: config.getStyle(calendarModule.stylePath, "fontSize", 14)
+        color: config.getStyle(calendarModule.stylePath, "textColor")
+        font.pixelSize: config.getStyle(calendarModule.stylePath, "fontSize")
     }
     
     CalendarPopup {

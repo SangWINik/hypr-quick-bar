@@ -45,13 +45,13 @@ Module {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
-                radius: 6
+                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor") : "transparent"
+                radius: config.getStyle(mediaModule.stylePath, "radius")
                 
                 Text {
                     anchors.centerIn: parent
                     text: mediaService.status === "Playing" ? "󰏤" : "󰐊"
-                    color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
+                    color: config.getStyle(mediaModule.stylePath, "textColor")
                     font.family: "NotoSansMono Nerd Font"
                     font.pixelSize: 18
                 }
@@ -64,7 +64,7 @@ Module {
             anchors.verticalCenter: parent.verticalCenter
             width: 1
             height: 16
-            color: config.getStyle(mediaModule.stylePath, "separatorColor", "#4dcdd6f4")
+            color: config.getStyle(mediaModule.stylePath, "separatorColor")
         }
         
         // Previous button
@@ -80,14 +80,14 @@ Module {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
-                radius: 6
+                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor") : "transparent"
+                radius: config.getStyle(mediaModule.stylePath, "radius")
                 opacity: parent.enabled ? 1.0 : 0.3
                 
                 Text {
                     anchors.centerIn: parent
                     text: "󰒮"
-                    color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
+                    color: config.getStyle(mediaModule.stylePath, "textColor")
                     font.family: "NotoSansMono Nerd Font"
                     font.pixelSize: 16
                 }
@@ -113,7 +113,7 @@ Module {
                     anchors.verticalCenter: parent.verticalCenter
                     width: 8
                     height: 8
-                    radius: 4
+                    radius: config.getStyle(mediaModule.stylePath, "radius")
                     color: "#ef4444"
                 }
                 
@@ -126,8 +126,8 @@ Module {
                         }
                         return fullText
                     }
-                    color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
-                    font.pixelSize: config.getStyle(mediaModule.stylePath, "fontSize", 14) - 3
+                    color: config.getStyle(mediaModule.stylePath, "textColor")
+                    font.pixelSize: config.getStyle(mediaModule.stylePath, "fontSize") - 3
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
                 }
@@ -141,21 +141,12 @@ Module {
                 
                 // Background track
                 Rectangle {
+                    id: timelineTrack
                     anchors.centerIn: parent
                     width: parent.width
                     height: 4
-                    color: config.getStyle(mediaModule.stylePath, "separatorColor", "#4dcdd6f4")
+                    color: config.getStyle(mediaModule.stylePath, "borderColor")
                     radius: 2
-                    
-                    // Progress bar
-                    Rectangle {
-                        anchors.left: parent.left
-                        anchors.verticalCenter: parent.verticalCenter
-                        width: mediaService.length > 0 ? (mediaService.position / mediaService.length) * parent.width : 0
-                        height: parent.height
-                        color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
-                        radius: 2
-                    }
                 }
                 
                 // Interactive overlay for seeking
@@ -173,10 +164,22 @@ Module {
                     
                     // Visual feedback
                     Rectangle {
-                        anchors.fill: parent
-                        color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColorDim", "#1acdd6f4") : "transparent"
+                        height: 4
+                        width: parent.width
+                        anchors.centerIn: parent
+                        color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColorDim") : "transparent"
                         radius: 2
                     }
+                }
+
+                // Progress bar (Rendered last to stay on top)
+                Rectangle {
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: mediaService.length > 0 ? (mediaService.position / mediaService.length) * parent.width : 0
+                    height: 4
+                    color: config.getStyle(mediaModule.stylePath, "accentColor")
+                    radius: 2
                 }
             }
         }
@@ -194,14 +197,14 @@ Module {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
-                radius: 6
+                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor") : "transparent"
+                radius: config.getStyle(mediaModule.stylePath, "radius")
                 opacity: parent.enabled ? 1.0 : 0.3
                 
                 Text {
                     anchors.centerIn: parent
                     text: "󰒭"
-                    color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
+                    color: config.getStyle(mediaModule.stylePath, "textColor")
                     font.family: "NotoSansMono Nerd Font"
                     font.pixelSize: 16
                 }
@@ -214,7 +217,7 @@ Module {
             anchors.verticalCenter: parent.verticalCenter
             width: 1
             height: 16
-            color: config.getStyle(mediaModule.stylePath, "separatorColor", "#4dcdd6f4")
+            color: config.getStyle(mediaModule.stylePath, "separatorColor")
         }
         
         // Volume button
@@ -229,8 +232,8 @@ Module {
             
             Rectangle {
                 anchors.fill: parent
-                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
-                radius: 6
+                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor") : "transparent"
+                radius: config.getStyle(mediaModule.stylePath, "radius")
                 
                 Text {
                     anchors.centerIn: parent
@@ -245,7 +248,7 @@ Module {
                             return "󰕾"
                         }
                     }
-                    color: config.getStyle(mediaModule.stylePath, "textColor", "#cdd6f4")
+                    color: config.getStyle(mediaModule.stylePath, "textColor")
                     font.family: "NotoSansMono Nerd Font"
                     font.pixelSize: 16
                 }

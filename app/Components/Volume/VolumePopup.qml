@@ -52,7 +52,7 @@ ModulePopup {
                     
                     Rectangle {
                         anchors.fill: parent
-                        color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
+                        color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor") : "transparent"
                         radius: 6
                         
                         Text {
@@ -68,7 +68,7 @@ ModulePopup {
                                     return "󰕾";
                                 }
                             }
-                            color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                            color: config.getStyle(stylePath, "textColor")
                             font.family: "NotoSansMono Nerd Font"
                             font.pixelSize: 20
                         }
@@ -78,7 +78,7 @@ ModulePopup {
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     text: Math.round(volume * 100) + "%"
-                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                    color: config.getStyle(stylePath, "textColor")
                     font.pixelSize: 18
                     font.bold: true
                 }
@@ -104,13 +104,13 @@ ModulePopup {
                 
                 Rectangle {
                     anchors.fill: parent
-                    color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor", "#4dcdd6f4") : "transparent"
+                    color: parent.containsMouse ? config.getStyle(stylePath, "hoverColor") : "transparent"
                     radius: 6
                     
                     Text {
                         anchors.centerIn: parent
                         text: "󰒓"  // Settings/config icon
-                        color: config.getStyle(stylePath, "textColor", "#cdd6f4")
+                        color: config.getStyle(stylePath, "textColor")
                         font.family: "NotoSansMono Nerd Font"
                         font.pixelSize: 20
                     }
@@ -143,12 +143,12 @@ ModulePopup {
                     width: qtSlider.availableWidth
                     height: 6
                     radius: 3
-                    color: config.getStyle(stylePath, "dimColor", "#99cdd6f4")
+                    color: config.getStyle(stylePath, "dimColor")
                     
                     Rectangle {
                         width: qtSlider.visualPosition * parent.width
                         height: parent.height
-                        color: config.getStyle(stylePath, "accentColor", "#89b4fa")
+                        color: config.getStyle(stylePath, "accentColor")
                         radius: 3
                     }
                 }
@@ -159,8 +159,8 @@ ModulePopup {
                     width: 18
                     height: 18
                     radius: 9
-                    color: config.getStyle(stylePath, "textColor", "#cdd6f4")
-                    border.color: config.getStyle(stylePath, "borderColor", "#4dcdd6f4")
+                    color: config.getStyle(stylePath, "textColor")
+                    border.color: config.getStyle(stylePath, "borderColor")
                     border.width: 2
                 }
             }

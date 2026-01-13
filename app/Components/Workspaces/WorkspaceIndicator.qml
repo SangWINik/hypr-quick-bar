@@ -13,16 +13,16 @@ Rectangle {
     property bool hasNotification: false
     
     // Style properties for each state
-    property color focusedColor: config.getStyle(stylePath, "focusedColor", "#89b4fa")
-    property color hoveredColor: config.getStyle(stylePath, "hoveredColor", "#99cdd6f4")
-    property color notificationColor: config.getStyle(stylePath, "notificationColor", "#f38ba8")
-    property color defaultColor: config.getStyle(stylePath, "defaultColor", "#cdd6f4")
+    property color focusedColor: config.getStyle(stylePath, "focusedColor")
+    property color hoveredColor: config.getStyle(stylePath, "hoveredColor")
+    property color notificationColor: config.getStyle(stylePath, "notificationColor")
+    property color defaultColor: config.getStyle(stylePath, "defaultColor")
     
-    property color focusedTextColor: config.getStyle(stylePath, "focusedTextColor", "#1e1e2e")
-    property color defaultTextColor: config.getStyle(stylePath, "defaultTextColor", "#1e1e2e")
+    property color focusedTextColor: config.getStyle(stylePath, "focusedTextColor")
+    property color defaultTextColor: config.getStyle(stylePath, "defaultTextColor")
     
-    property real focusedScale: config.getStyle(stylePath, "focusedScale", 1.3)
-    property real hoveredScale: config.getStyle(stylePath, "hoveredScale", 1.08)
+    property real focusedScale: config.getStyle(stylePath, "focusedScale")
+    property real hoveredScale: config.getStyle(stylePath, "hoveredScale")
     property real defaultScale: 1.0
     
     width: 18

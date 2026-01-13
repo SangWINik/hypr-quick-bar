@@ -27,9 +27,9 @@ Module {
             return icon + " " + weatherService.temperature;
         }
         
-        color: config.getStyle(weatherModule.stylePath, "textColor", "#cdd6f4")
+        color: config.getStyle(weatherModule.stylePath, "textColor")
         font.family: "NotoSansMono Nerd Font"
-        font.pixelSize: config.getStyle(weatherModule.stylePath, "fontSize", 14)
+        font.pixelSize: config.getStyle(weatherModule.stylePath, "fontSize")
     }
     
     WeatherPopup {

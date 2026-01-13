@@ -1,23 +1,18 @@
 import QtQuick
 
-Rectangle {
-    property var stylePath: ["bar", "section"]
-    
-    property int horizontalPadding: config.getStyle(stylePath, "paddingX", 0)
-    property int sectionSpacing: config.getStyle(stylePath, "spacing", 0)
 
-    implicitHeight: config.getStyle(stylePath, "height", 30)
+StyledRectangle {
+    stylePath: ["bar", "section"]
+    
+    // Additional property specific to BarSection
+    property int sectionSpacing: config.getStyle(stylePath, "spacing")
+
     implicitWidth: contentRow.implicitWidth + horizontalPadding * 2
-    
-    color: config.getStyle(stylePath, "backgroundColor", "transparent")
-    radius: config.getStyle(stylePath, "radius", 0)
-    border.color: config.getStyle(stylePath, "borderColor", "transparent")
-    border.width: config.getStyle(stylePath, "borderWidth", 0)
-    
-    antialiasing: true
     
     // Only render if there are children
     visible: contentRow.children.length > 0
+    
+    antialiasing: true
     
     Behavior on implicitWidth {
         NumberAnimation {
@@ -41,3 +36,4 @@ Rectangle {
         // Children (modules) will be added here
     }
 }
+
