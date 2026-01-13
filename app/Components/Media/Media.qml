@@ -167,7 +167,7 @@ Module {
                         height: 4
                         width: parent.width
                         anchors.centerIn: parent
-                        color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColorDim") : "transparent"
+                        color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "dimColor") : "transparent"
                         radius: 2
                     }
                 }

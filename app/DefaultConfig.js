@@ -11,7 +11,7 @@ var data = {
             "accentColor": "#507090",     // Muted slate blue
             "borderColor": "#aaaaaa",     // Visible gray border
             "hoverColor": "#d0d0d0",      // Slightly darker gray for hover
-            "borderWidth": 1,
+            "borderWidth": 0,
             "radius": 0,                  // Sharp corners
             "fontSize": 14,
             "position": "bottom",
@@ -44,8 +44,7 @@ var data = {
                             "hoveredScale": 1.0
                         },
                         "media": {
-                            "separatorColor": "#222222",
-                            "hoverColorDim": "#d0d0d0"
+                            "separatorColor": "#222222"
                         },
                         "power": {
                             "textColor": "#a04040" // Red for power
