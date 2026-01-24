@@ -25,6 +25,13 @@ QtObject {
         triggeredOnStart: false
         onTriggered: weatherService.refresh()
     }
+
+    property var internetConnection: Connections {
+        target: internetService
+        function onConnected() {
+            weatherService.refresh()
+        }
+    }
     
     // Step 1: Location via IP
     property var locationProcess: Process {

@@ -12,6 +12,17 @@ QtObject {
     property string ipAddress: ""
     property bool wifiEnabled: true
     property bool wifiToggling: false
+
+    signal connected()
+    signal disconnected()
+
+    onIsConnectedChanged: {
+        if (isConnected) {
+            connected()
+        } else {
+            disconnected()
+        }
+    }
     
     // Monitor NetworkManager state via D-Bus monitoring
     property var nmMonitor: Process {
