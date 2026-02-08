@@ -13,6 +13,9 @@ Module {
     // Setting: show volume controls (true) or hide them (false)
     property bool showVolumeControls: false
     
+    // Setting: show debug button (configurable)
+    property bool showDebugButton: config.getComponentConfig("media", "showDebugButton")
+    
     visible: mediaService.hasActiveMedia
     horizontalPadding: 4
     
@@ -54,6 +57,31 @@ Module {
                     color: config.getStyle(mediaModule.stylePath, "textColor")
                     font.family: "NotoSansMono Nerd Font"
                     font.pixelSize: 18
+                }
+            }
+        }
+        
+        // Debug button (after play/pause)
+        MouseArea {
+            id: debugButton
+            visible: showDebugButton
+            anchors.verticalCenter: parent.verticalCenter
+            width: 28
+            height: 28
+            hoverEnabled: true
+            onClicked: popupManager.togglePopup(debugPopup)
+            
+            Rectangle {
+                anchors.fill: parent
+                color: parent.containsMouse ? config.getStyle(mediaModule.stylePath, "hoverColor") : "transparent"
+                radius: config.getStyle(mediaModule.stylePath, "radius")
+                
+                Text {
+                    anchors.centerIn: parent
+                    text: "󰃤"  // nf-md-bug
+                    color: config.getStyle(mediaModule.stylePath, "textColor")
+                    font.family: "NotoSansMono Nerd Font"
+                    font.pixelSize: 16
                 }
             }
         }
@@ -270,5 +298,10 @@ Module {
     VolumePopup {
         id: volumePopup
         targetModule: volumeButton
+    }
+    
+    MediaDebugPopup {
+        id: debugPopup
+        targetModule: debugButton
     }
 }

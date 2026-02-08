@@ -25,6 +25,9 @@ Item {
     // Computed property for live streams (max int64 means unknown/infinite duration, or position > length)
     property bool isLive: length == 0 || length >= 9223372036854775807 || (length > 0 && position > length)
     
+    // Debug properties - raw metadata from playerctl
+    property string rawMetadata: ""
+    
     // Continuous metadata monitoring process (event-based)
     property var metadataMonitor: Process {
         running: true
@@ -45,6 +48,9 @@ Item {
     }
     
     function parseMetadata(line) {
+        // Store raw metadata for debugging
+        rawMetadata = line;
+        
         var parts = line.split("|||");
         if (parts.length !== 8) {
             status = "Stopped";

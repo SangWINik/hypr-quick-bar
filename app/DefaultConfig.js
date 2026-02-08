@@ -77,6 +77,9 @@ var data = {
         }
     },
     "components": {
+        "media": {
+            "showDebugButton": false
+        },
         "weather": {
             "refreshIntervalMinutes": 30,
             "location": "auto"
